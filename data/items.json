@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Evenimente populare",
+        "evenimente": [
+            {
+                "title": "Ziua Vinului",
+                "time": "18:00->22:00",
+                "date": "16.03",
+                "price": 100,
+                "image": "image/ziuaVinului.jpg"
+            },
+            {
+                "title": "Kaleidoscop",
+                "time": "18:00->23:00",
+                "date": "25.04",
+                "price": 250,
+                "image": "image/kaleidoscop.jpg"
+            },
+            {
+                "title": "Nascut in Moldova",
+                "time": "18:00->22:00",
+                "date": "13.06->14.06",
+                "price": 250,
+                "image": "image/Nascut-in-moldova.jpg"
+            },
+            {
+                "title": "Spectacol - Un gest mic pentru tine",
+                "time": "17:00->19:00",
+                "date": "07.06",
+                "price": 250,
+                "image": "image/spectacol-1.jpg"
+            },
+            {
+                "title": "O seara in parc",
+                "time": "19:00->22:00",
+                "date": "5.06",
+                "price": 250,
+                "image": "image/o-seara-in-parc.jpg"
+            }
+        ]
+    }
+]

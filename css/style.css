@@ -1,0 +1,240 @@
+body{
+    background-color: #FFFBDA;
+}
+
+header{
+    display: grid;
+    grid-template-areas: 
+    "logo center right"
+    "categories categories categories";
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+#logo{
+    background-color: aliceblue;
+
+    grid-area: logo;
+    align-items: center;
+
+    height: 50px;
+    width: 180px;
+}
+
+#center{
+    grid-area: center;
+    justify-self: center;
+    align-items: center;
+
+    display: grid;
+    grid-template-areas: 
+    "search language";
+}
+
+/*search bar*/
+.form button {
+  border: none;
+  background: none;
+  color: #8b8ba7;
+}
+
+.form {
+  --timing: 0.3s;
+  --width-of-input: 520px;
+  --height-of-input: 50px;
+  --border-height: 2px;
+  --input-bg: #FFEC9E;
+  --border-radius: 30px;
+  grid-area: search;
+  position: relative;
+  width: var(--width-of-input);
+  height: var(--height-of-input);
+  display: flex;
+  align-items: center;
+  padding-inline: 0.8em;
+  border-radius: var(--border-radius);
+  background: var(--input-bg,#fff);
+}
+
+.input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+
+.form:before {
+  content: "";
+  position: absolute;
+  background: var(--border-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: var(--border-height);
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+
+.form svg {
+  width: 17px;
+  margin-top: 3px;
+}
+
+#language{
+    margin: 5px;
+    grid-area: language;
+}
+
+#language select{
+    background-color: #FFFBDA;
+    font-size: 32px;    
+
+    border: none;
+    appearance: none;
+}
+
+#language select::picker(select){
+    outline: 0;
+}
+
+#language option{
+    border: none;
+    
+}
+
+#right{
+    grid-area: right;
+    justify-content: right;
+    align-items: center;
+
+    display: grid;
+    grid-template-areas: 
+    "account theme";
+}
+
+#account{
+    grid-area: account;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+#account:hover{
+    background-color: #FFEC9E;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#accountImg{
+    width: 40px;
+    height: 40px;
+}
+
+#themeButton{
+    grid-area: theme;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+#themeButton:hover{
+    background-color: #FFEC9E;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#themeButtonImg{
+    color: black;
+    width: 40px;
+    height: 40px;
+}
+
+#categories{
+    grid-area: categories;
+    justify-self: center;
+}
+
+.categoriesButton{
+    background: linear-gradient(to right, #FFEC9E, #FFBB70);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.categoriesButton:hover{
+    cursor: pointer;
+}
+
+#categories select{
+    background: linear-gradient(to right, #FFEC9E, #FFBB70);
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#categories select:hover{
+    cursor: pointer;
+}
+
+.showcase{
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#img1{
+    width: 621px;
+    height: 440px;
+    opacity: 0.6;
+    border-radius: 10px;
+}
+
+#img2{
+    width: 794px;
+    height: 480px;
+    z-index: 1;
+    position: absolute;
+    border-radius: 10px;
+}
+
+#img3{
+    width: 621px;
+    height: 440px;
+    opacity: 0.6;
+    border-radius: 10px;
+}
