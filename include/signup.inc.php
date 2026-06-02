@@ -2,9 +2,9 @@
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = $_POST['username'];
+    $password = $_POST['pwd'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
-
+    
     try {
         require_once 'dbh.inc.php';
         require_once 'signup_model.inc.php';
@@ -30,10 +30,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if($errors){
             $_SESSION['errors_signup'] = $errors;
+
+            $signupData = [
+                "username" => $username,
+                "email" => $email
+            ];
+            $_SESSION['signup_data'] = $signupData;
+
             header('Location: ../signup.php');
+            die();
         }
+
+        create_user($pdo, $username, $password, $email);
+
+        header('Location: ../signup.php?signup=success');
+
+        $pdo = null;
+        $stmt = null;
+
+        die();
     } catch (PDOException $e) {
-        die('Query failed: '.$e->getMessage());
+        die('Query failed: ' . $e->getMessage());
     }
 } else {
     header('Location: ../signup.php');

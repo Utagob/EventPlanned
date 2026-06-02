@@ -13,10 +13,10 @@
 <body>
     <h3>Sign Up</h3>
 
-    <form action="include/signup.inc.php">
-        <input type="text" name="username">
-        <input type="text" name="pwd">
-        <input type="text" name="email">
+    <form action="include/signup.inc.php" method="POST">
+        <?php
+        signup_inputs();
+        ?>
         <button>SignUp</button>
     </form>
 
