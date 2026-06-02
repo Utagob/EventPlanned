@@ -1,3 +1,13 @@
+<?php
+
+if(isset($_POST['account'])){
+
+    header('Location:signup.php');
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
 
@@ -32,8 +42,8 @@
             </div>
         </div>
         <div id="right">
-            <div id="account">
-                <img src="image/account.svg" id="accountImg">
+            <div id="account" name="account">
+                <input type="submit" name="account" class="accountInput">
             </div>
             <div id="themeButton">
                 <img src="image/moon.svg" id="themeButtonImg">
@@ -59,7 +69,7 @@
         <img src="image/eveniment3.jpg" id="img3"></img>
     </div>
 
-    <?php
+    <!-- <?php
     
     $contents = file_get_contents("data/items.json");
 
@@ -77,7 +87,7 @@
     print_r($data);
     echo "</pre>";
     
-    ?>
+    ?> -->
 
 </body>
 </html>
