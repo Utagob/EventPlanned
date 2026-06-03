@@ -1,5 +1,6 @@
 body{
     background-color: #FFFBDA;
+    margin: 0;
 }
 
 header{
@@ -8,11 +9,13 @@ header{
     "logo center right"
     "categories categories categories";
     grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
 }
 
-#logo{
+.logo{
     background-color: aliceblue;
 
+    display: flex;
     grid-area: logo;
     align-items: center;
 
@@ -20,7 +23,8 @@ header{
     width: 180px;
 }
 
-#center{
+.center{
+    display: flex;
     grid-area: center;
     justify-self: center;
     align-items: center;
@@ -99,12 +103,12 @@ input:not(:placeholder-shown) ~ .reset {
   margin-top: 3px;
 }
 
-#language{
+.language{
     margin: 5px;
     grid-area: language;
 }
 
-#language select{
+.language select{
     background-color: #FFFBDA;
     font-size: 32px;    
 
@@ -112,16 +116,17 @@ input:not(:placeholder-shown) ~ .reset {
     appearance: none;
 }
 
-#language select::picker(select){
+.language select::picker(select){
     outline: 0;
 }
 
-#language option{
+.language option{
     border: none;
     
 }
 
-#right{
+.right{
+    display: flex;
     grid-area: right;
     justify-content: right;
     align-items: center;
@@ -131,7 +136,7 @@ input:not(:placeholder-shown) ~ .reset {
     "account theme";
 }
 
-#account{
+.account{
     grid-area: account;
     width: 50px;
     height: 50px;
@@ -142,18 +147,18 @@ input:not(:placeholder-shown) ~ .reset {
     margin: 5px;
 }
 
-#account:hover{
+.account:hover{
     background-color: #FFEC9E;
     cursor: pointer;
     border-radius: 5px;
 }
 
-#accountImg{
-    width: 40px;
-    height: 40px;
+.accountImg{
+    width: 50px;
+    height: 50px;
 }
 
-#themeButton{
+.themeButton{
     grid-area: theme;
     width: 50px;
     height: 50px;
@@ -164,19 +169,19 @@ input:not(:placeholder-shown) ~ .reset {
     margin: 5px;
 }
 
-#themeButton:hover{
+.themeButton:hover{
     background-color: #FFEC9E;
     cursor: pointer;
     border-radius: 5px;
 }
 
-#themeButtonImg{
+.themeButtonImg{
     color: black;
     width: 40px;
     height: 40px;
 }
 
-#categories{
+.categories{
     grid-area: categories;
     justify-self: center;
 }
@@ -194,7 +199,7 @@ input:not(:placeholder-shown) ~ .reset {
     cursor: pointer;
 }
 
-#categories select{
+.categories select{
     background: linear-gradient(to right, #FFEC9E, #FFBB70);
     border-radius: 5px;
     border: none;
@@ -203,7 +208,7 @@ input:not(:placeholder-shown) ~ .reset {
     margin: 5px;
 }
 
-#categories select:hover{
+.categories select:hover{
     cursor: pointer;
 }
 
@@ -215,24 +220,28 @@ input:not(:placeholder-shown) ~ .reset {
 
     justify-content: center;
     align-items: center;
+
+    position: relative;
 }
 
-#img1{
+.img1{
     width: 621px;
     height: 440px;
     opacity: 0.6;
     border-radius: 10px;
 }
 
-#img2{
+.img2{
     width: 794px;
     height: 480px;
     z-index: 1;
-    position: absolute;
     border-radius: 10px;
+
+    margin-left: -25%;
+    margin-right: -25%;
 }
 
-#img3{
+.img3{
     width: 621px;
     height: 440px;
     opacity: 0.6;
