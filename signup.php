@@ -8,21 +8,19 @@
 
 <head>
     <title>Sign Up</title>
+    <link rel="stylesheet" href="css/signUp.css">
 </head>
 
 <body>
-    <h3>Sign Up</h3>
-
-    <form action="include/signup.inc.php" method="POST">
-        <?php
-        signup_inputs();
-        ?>
+<div class="Form">
+    <h3 class="Form-title">Sign Up</h3>
+    <form action="include/signup.inc.php" method="POST" class="Form-input-section">
+        <?php signup_inputs();?>
         <button>SignUp</button>
+        <button>LogIn</button>
     </form>
-
-    <?php
-        check_signup_errors();
-    ?>
+    <?php check_signup_errors();?>
+</div>
 
 </body>
 

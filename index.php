@@ -1,11 +1,12 @@
 <?php
+require_once "include/config_session.inc.php";
+require_once "include/login_view.inc.php";
 
-if(isset($_POST['account'])){
-
-    header('Location:signup.php');
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['accountbtn'])) {
+        header('Location: login.php');
+    }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -18,17 +19,24 @@ if(isset($_POST['account'])){
 
 <body>
     <header>
+        <?php
+        output_username();
+        ?>
         <div id="logo">LOGO</div>
         <div id="center">
             <form class="form">
                 <button>
-                    <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                        <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
+                        aria-labelledby="search">
+                        <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
+                            stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
+                        </path>
                     </svg>
                 </button>
                 <input class="input" placeholder="Caută" required="" type="text">
                 <button class="reset" type="reset">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
@@ -42,9 +50,9 @@ if(isset($_POST['account'])){
             </div>
         </div>
         <div id="right">
-            <div id="account" name="account">
-                <input type="submit" name="account" class="accountInput">
-            </div>
+            <form id="account" method="POST">
+                <input type="submit" name="accountbtn" class="accountInput" value="Login">
+            </form>
             <div id="themeButton">
                 <img src="image/moon.svg" id="themeButtonImg">
             </div>
@@ -55,7 +63,7 @@ if(isset($_POST['account'])){
             <button class="categoriesButton">Expoziții</button>
             <button class="categoriesButton">Spectacole</button>
             <button class="categoriesButton">Sport</button>
-            <select name="categorySelect" >
+            <select name="categorySelect">
                 <option value="">Mai multe</option>
                 <option value="Training">Training</option>
                 <option value="PentruCopii">Pentru Copii</option>
@@ -70,14 +78,14 @@ if(isset($_POST['account'])){
     </div>
 
     <!-- <?php
-    
+
     $contents = file_get_contents("data/items.json");
 
-    try{
+    try {
 
         $data = json_decode($contents, flags: JSON_THROW_ON_ERROR);
 
-    }catch(JsonException $e){
+    } catch (JsonException $e) {
 
         exit($e->getMessage());
 
@@ -86,8 +94,9 @@ if(isset($_POST['account'])){
     echo "<pre>";
     print_r($data);
     echo "</pre>";
-    
+
     ?> -->
 
 </body>
+
 </html>
