@@ -23,3 +23,12 @@ function check_login_errors(){
         echo '<p class="form-success">Login Successful</p>';
     }
 }
+
+include('login_contr.inc.php');
+function output_avatar(){
+    if(isset($_SESSION["user_id"])){
+        echo '<img style="border-radius: 50%;" src="' . make_avatar($_SESSION['user_username'][0]) . '">';
+    } else {
+        echo '<img style="width: 35px; height: 35px;" src="image/account.svg">';
+    }
+}

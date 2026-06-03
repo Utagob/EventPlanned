@@ -25,3 +25,39 @@ function is_pwd_correct(string $pwd, string $hashedPwd){
         return false;
     }
 }
+
+function make_avatar($character){
+    $filename = md5($character) . ".png";
+    $path = "avatar/" . $filename;
+
+    if(!is_readable($path)){
+        $canvasWidth = 35;
+        $canvasHeight = 35;
+        $fontSize = 15;
+        $fontPath = getcwd() . "/css/OpenSans.ttf";
+
+        $image = imagecreate($canvasWidth, $canvasHeight); 
+        
+        $red = rand(0, 255);
+        $green = rand(0, 255);
+        $blue = rand(0, 255);
+
+        imagecolorallocate($image, $red, $green, $blue);
+        $textcolor = imagecolorallocate($image, 255, 255, 255);
+
+        $bbox = imagettfbbox($fontSize, 0, $fontPath, $character);
+
+        $textWidth = $bbox[2] - $bbox[0];
+        $textHeight = $bbox[1] - $bbox[7];
+
+        $x = ($canvasWidth - $textWidth) / 2 - $bbox[0];
+        $y = ($canvasHeight - $textHeight) / 2 + $textHeight - $bbox[1];
+
+        imagettftext($image, $fontSize, 0, (int)$x, (int)$y, $textcolor, $fontPath, $character);
+
+        imagepng($image, $path);
+        unset($image);
+    }
+
+    return $path;
+}

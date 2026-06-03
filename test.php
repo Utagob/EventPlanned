@@ -1,7 +1,7 @@
 <?php
 function consoleLog($message){
-        echo "<script>console.log('" . $message . "');</script>";
-    }
+    echo "<script>console.log('" . $message . "');</script>";
+}
 
 function evenNumbers($x){
     $even = 0;

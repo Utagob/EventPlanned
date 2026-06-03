@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types= 1);
+include('create_avatar.inc.php');
 
 function get_username(object $pdo, string $username){
     $query = 'SELECT username FROM users WHERE username = :username;';

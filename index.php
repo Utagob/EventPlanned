@@ -19,11 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <?php
-        output_username();
-        ?>
-        <div id="logo">LOGO</div>
-        <div id="center">
+        <div class="logo">LOGO</div>
+        <div class="center">
             <form class="form">
                 <button>
                     <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -41,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </svg>
                 </button>
             </form>
-            <div id="language">
+            <div class="language">
                 <select name="languageSelect">
                     <option value="RO">RO</option>
                     <option value="RU">RU</option>
@@ -49,15 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
             </div>
         </div>
-        <div id="right">
-            <form id="account" method="POST">
+        <div class="right">
+            <form class="account" method="POST">
                 <input type="submit" name="accountbtn" class="accountInput" value="Login">
+                <?php output_avatar();?>
             </form>
-            <div id="themeButton">
-                <img src="image/moon.svg" id="themeButtonImg">
-            </div>
+            <form class="themeButton">
+                <img src="image/moon.svg" class="themeButtonImg">
+            </form>
         </div>
-        <div id="categories">
+        <div class="categories">
             <button class="categoriesButton">Concerte</button>
             <button class="categoriesButton">Festivaluri</button>
             <button class="categoriesButton">Expoziții</button>
@@ -72,9 +70,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
 
     <div class="showcase">
-        <img src="image/eveniment2.webp" id="img1"></img>
-        <img src="image/eveniment1.webp" id="img2"></img>
-        <img src="image/eveniment3.jpg" id="img3"></img>
+        <img src="image/eveniment2.webp" class="img1">
+        <img src="image/eveniment1.webp" class="img2">
+        <img src="image/eveniment3.jpg" class="img3">
     </div>
 
     <!-- <?php
