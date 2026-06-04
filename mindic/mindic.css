@@ -1,0 +1,438 @@
+:root{  
+    --nav-bg: #282828;
+    --text-w: #ffffff;
+    --text-g: #00FFD1;
+    --green1: #3DB692;
+    --green2: #55AE93;
+    --green3: #12362B;
+    --login: #6EC5A0;
+}
+
+* input, button, a{
+    cursor: pointer;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+
+    background-color: #121212;
+}
+
+.navbar{
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    height: 64px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    background-color: var(--nav-bg);
+    color: var(--text-w);
+
+    font-family: "Poppins";
+}
+
+#logo{
+    color: var(--text-w);
+
+    width: 102px;
+    height: 36px;
+}
+
+.text{
+    display: flex;
+    gap: 64px;
+}
+
+.text a{
+    color: var(--text-w);
+    text-decoration: none;
+}
+
+.text a:hover{
+    color: var(--text-g);
+}
+
+#signupbtn{
+    background-color: var(--nav-bg);
+    color: var(--text-w);
+
+    border: 0;
+
+    font-family: "Poppins";
+}
+
+#loginbtn{
+    border: 0;
+    border-radius: 114px;
+    width: 85px;
+    height: 36px;
+    
+    color: var(--text-w);
+    background-color: var(--login);
+
+    font-family: "Poppins";
+    font-weight: bold;
+}
+
+#loginbtn:hover{
+    background-color: transparent;
+    border: 1px solid var(--login);
+}
+
+#home{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 80vh;
+
+    background: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 7%, 0.88)), 
+    url('mindic.png') center/cover no-repeat;
+    clip-path: ellipse(120% 100% at 50% 0%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#homeSection{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 657px;
+    height: 486.23px;
+
+    color: var(--text-w);
+
+    font-family: "Montserrat";
+}
+
+#homeSection *{
+    margin: 0;
+}
+
+#homeSection h3{
+    font-weight: 800;
+    font-size: 32px;
+}
+
+#homeSection h1{
+    font-size: 164px;
+}
+
+#homeSection p{
+    font-size: 18px;
+}
+
+.greenT{
+    color: var(--text-g);
+}
+
+#homeSection button{
+    margin-top: 120px;
+    padding: 20px;
+
+    width: 150px;
+    height: 60px;
+
+    border: 1px solid var(--green1);
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--text-w);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#homeSection button:hover{
+    transition: 0.1s;
+    background-color: var(--green1);
+}
+
+#news{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+
+    width: 100%;
+    height: 1200px;
+
+    background: linear-gradient(#121212, #191B1B);
+
+    box-shadow: 0 5px 21px #000;
+}
+
+#news h1{
+    color: var(--text-w);
+
+    font-family: "Montserrat";
+    font-size: 50px;
+}
+
+.newsMain-wrap{
+    width: 1240px;
+    height: 720px;
+
+    border-radius: 15px;
+
+    position: relative;
+    background: linear-gradient(#101010, #CAFFE9);
+    padding: 1px;
+}
+
+.newsMain{
+    display: grid;
+    grid-template-areas:
+    "v v v v v" 
+    "arrowR card1 card2 card3 arrowL";
+
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 15px;
+
+    background: #101010;
+    color: white;
+}
+
+.newsMain p{
+    margin: 0;
+
+    grid-area: v;   
+
+    justify-self: center;
+
+    color: var(--text-w);
+    top: 0;
+
+    text-decoration: underline;
+
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 275;
+}
+
+.arrow{
+    width: 35px;
+    height: auto;
+    fill: white;
+}
+
+.arrowR{
+    grid-area: arrowR;
+}
+
+.arrowL{
+    grid-area: arrowL;
+}
+
+.card{
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+
+    width: 356px;
+    height: 620px;
+    border-radius: 18px;
+    background-color: #252626;
+}
+
+.card img{
+    margin: 10px;
+
+    width: 340px;
+    height: 470px;
+
+    object-fit: cover;
+    object-position: 80% 20%;
+
+    border-radius: 18px;
+}
+
+.card p{
+    max-width: 287px;
+
+    font-family: "Poppins";
+    font-size: 18px;
+    font-weight: 275;
+
+    align-items: center;
+
+    text-align: center;
+    text-decoration: none;
+}
+
+.l{
+    grid-area: card1;
+}
+
+.c{
+    grid-area: card2;
+}
+
+.r{
+    grid-area: card3;
+}
+
+.card button{
+    margin-top: 8px;
+    width: 127px;
+    height: 45px;
+
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--green1);
+    color: var(--text-w);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.card button:hover{
+    background-color: transparent;
+    border: 1px solid var(--green2);
+}
+
+#about{
+    display: grid;
+    grid-template-areas: 
+    "title title"
+    "info maps";
+    column-gap: 100px;
+
+    align-items: center;
+    z-index: 0;
+
+    background-color: rgba(232, 232, 232, 0.87);
+
+    padding: 100px;
+    padding-top: 0;
+}
+
+#about h2{
+    grid-area: title;
+
+    justify-self: center;
+
+    font-family: "Poppins";
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.info{
+    grid-area: info;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Poppins";
+    font-size: 18px;
+}
+
+.info p{
+    margin: 0;
+    top: 0;
+}
+
+.info a{
+    color: #000;
+}
+
+.legend{
+    margin-top: 80px;
+
+    width: 150px;
+    height: 60px;
+
+    border: 0;
+    border-radius: 50px;
+    background-color: var(--green3);
+    color: var(--text-w);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mapHover{
+    grid-area: maps;
+    width: 620px;
+    height: 460px;
+    position: relative;
+}
+
+.map{
+    width: 600px;
+    height: 440px;
+    transform-origin: left top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    transition: 0.1s;
+}   
+
+.mapHover:hover .map{
+    width: 620px;
+    height: 460px;
+}
+
+.mapShadow{
+    width: 600px;
+    height: 440px;
+    position: absolute;
+    background-color: #12362B;
+    bottom: 0;
+    right: 0;
+}
+
+.mapText{
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(48, 48, 48, 0.5);
+    color: var(--text-w);
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Poppins";
+    font-size: 27px;
+    text-decoration: none;
+
+    transition: 0.1s;
+}
+
+.mapHover:hover .mapText{
+    opacity: 1;
+    pointer-events: auto;
+}
