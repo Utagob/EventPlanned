@@ -208,12 +208,11 @@ body{
     width: 100%;
     height: 100%;
     background: #121212;
-    padding: 80px 0 60px 0; /* Added top padding to clear space for "vezi toate" */
+    padding: 80px 0 60px 0;
     position: relative;
     border-radius: 15px;
 }
 
-/* Absolute position the "vezi toate" link at the top center */
 .newsMain > p {
     position: absolute;
     top: 30px;
@@ -232,7 +231,7 @@ body{
     width: 1128px;
     overflow: hidden;
     margin: 0 20px;
-    box-sizing: border-box; /* Force padding inside dimensions */
+    box-sizing: border-box;
 }
 
 .carousel-track {
@@ -255,33 +254,28 @@ body{
     padding-bottom: 24px;      
     margin: 0;
     
-    /* Active State Control handles opacity transitions */
-    opacity: 0.3; /* Dim non-visible cards slightly more for contrast */
-    transform: scale(0.96);
+    opacity: 0;
     transition: opacity 0.4s ease, transform 0.4s ease;
     box-sizing: border-box;
 }
 
-/* Brighten exactly the 3 cards within active visibility */
 .card.carousel__item--selected {
     opacity: 1;
     transform: scale(1);
 }
 
-/* Update image behavior inside the card wrapper */
 .card img {
-    margin: 8px; /* Balanced border gap */
+    margin: 8px;
     width: calc(100% - 16px);
-    height: 380px; /* Reduced slightly to accommodate cards vertically */
+    height: 380px;
     object-fit: cover;
     object-position: center;
-    border-radius: 14px; /* Inner rounding matching image_ff742a.jpg */
+    border-radius: 14px;
 }
 
-/* Style paragraphs inside the container */
 .card p {
     max-width: 290px;
-    margin: 15px 0; /* Add top/bottom space */
+    margin: 15px 0;
     color: var(--text-w);
     font-family: "Poppins";
     font-size: 16px;
@@ -289,12 +283,11 @@ body{
     line-height: 1.4;
     text-align: center;
     text-decoration: none;
-    min-height: 48px; /* Keeps text fields aligned regardless of line wrapping */
+    min-height: 48px;
 }
 
-/* Align and clean up button layout */
 .card button {
-    margin-top: auto; /* Pushes button to bottom boundary evenly */
+    margin-top: auto;
     width: 140px;
     height: 42px;
     border: 0;
@@ -441,16 +434,14 @@ body{
 }
 
 .overlay {
-    /* This creates the full screen "outside zone" backdrop */
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 20;
 
-    /* Centers the paragraph card perfectly on screen */
     display: flex;
     justify-content: center;
     align-items: center;
