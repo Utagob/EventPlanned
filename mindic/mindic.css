@@ -1,0 +1,490 @@
+:root{  
+    --nav-bg: #282828;
+    --text-w: #ffffff;
+    --text-g: #00FFD1;
+    --green1: #3DB692;
+    --green2: #55AE93;
+    --green3: #12362B;
+    --login: #6EC5A0;
+}
+
+* input, button, a{
+    cursor: pointer;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+
+    background-color: #121212;
+}
+
+.navbar{
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    height: 64px;
+    padding-left: 100px;
+    padding-right: 100px;
+
+    background-color: var(--nav-bg);
+    color: var(--text-w);
+
+    font-family: "Poppins";
+}
+
+#logo{
+    color: var(--text-w);
+
+    width: 102px;
+    height: 36px;
+}
+
+.text{
+    display: flex;
+    gap: 64px;
+}
+
+.text a{
+    color: var(--text-w);
+    text-decoration: none;
+}
+
+.text a:hover{
+    color: var(--text-g);
+}
+
+#signupbtn{
+    background-color: var(--nav-bg);
+    color: var(--text-w);
+
+    border: 0;
+
+    font-family: "Poppins";
+}
+
+#loginbtn{
+    border: 0;
+    border-radius: 114px;
+    width: 85px;
+    height: 36px;
+    
+    color: var(--text-w);
+    background-color: var(--login);
+
+    font-family: "Poppins";
+    font-weight: bold;
+}
+
+#loginbtn:hover{
+    background-color: transparent;
+    border: 1px solid var(--login);
+}
+
+#home{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    height: 80vh;
+
+    background: linear-gradient(hsla(0, 0%, 0%, 0), hsla(0, 0%, 7%, 0.88)), 
+    url('mindic.png') center/cover no-repeat;
+    clip-path: ellipse(120% 100% at 50% 0%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+#homeSection{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 657px;
+    height: 486.23px;
+
+    color: var(--text-w);
+
+    font-family: "Montserrat";
+}
+
+#homeSection *{
+    margin: 0;
+}
+
+#homeSection h3{
+    font-weight: 800;
+    font-size: 32px;
+}
+
+#homeSection h1{
+    font-size: 164px;
+}
+
+#homeSection p{
+    font-size: 18px;
+}
+
+.greenT{
+    color: var(--text-g);
+}
+
+#homeSection button{
+    margin-top: 120px;
+    padding: 20px;
+
+    width: 150px;
+    height: 60px;
+
+    border: 1px solid var(--green1);
+    border-radius: 50px;
+    background-color: transparent;
+    color: var(--text-w);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#homeSection button:hover{
+    transition: 0.1s;
+    background-color: var(--green1);
+}
+
+#news{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 0;
+
+    width: 100%;
+    padding: 100px 0;
+
+    background: linear-gradient(#121212, #191B1B);
+
+    box-shadow: 0 5px 21px #000;
+}
+
+#news h1{
+    color: var(--text-w);
+
+    font-family: "Montserrat";
+    font-size: 50px;
+
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.newsMain-wrap{
+    width: 1240px;
+    height: auto;
+
+    border-radius: 15px;
+
+    position: relative;
+    background: linear-gradient(#101010, #CAFFE9);
+    padding: 1px;
+}
+
+.newsMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+    padding: 80px 0 60px 0;
+    position: relative;
+    border-radius: 15px;
+}
+
+.newsMain > p {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: var(--text-w);
+    text-decoration: underline;
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 275;
+    z-index: 5;
+}
+
+.carousel-track-container {
+    width: 1128px;
+    overflow: hidden;
+    margin: 0 20px;
+    box-sizing: border-box;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: max-content;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-sizing: border-box;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0; 
+    width: 356px;
+    background-color: #212121; 
+    border-radius: 18px;       
+    padding-bottom: 24px;      
+    margin: 0;
+    
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-sizing: border-box;
+}
+
+.card.carousel__item--selected {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.card img {
+    margin: 8px;
+    width: calc(100% - 16px);
+    height: 380px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 14px;
+}
+
+.card p {
+    max-width: 290px;
+    margin: 15px 0;
+    color: var(--text-w);
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    min-height: 48px;
+}
+
+.card button {
+    margin-top: auto;
+    width: 140px;
+    height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--green1);
+    color: var(--text-w);
+    font-family: "Poppins";
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border 0.2s;
+}
+
+.card button:hover {
+    background-color: transparent;
+    border: 1px solid var(--green1);
+    color: var(--green1);
+}
+
+.arrow{
+    width: 35px;
+    height: 35px;
+}
+
+#about{
+    display: grid;
+    grid-template-areas: 
+    "title title"
+    "info maps";
+    column-gap: 100px;
+
+    align-items: center;
+    z-index: 0;
+
+    background-color: rgba(232, 232, 232, 0.87);
+
+    padding: 100px;
+    padding-top: 0;
+}
+
+#about h2{
+    grid-area: title;
+
+    justify-self: center;
+
+    font-family: "Poppins";
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.info{
+    grid-area: info;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Poppins";
+    font-size: 18px;
+}
+
+.info p{
+    margin: 0;
+    top: 0;
+}
+
+.info a{
+    color: #000;
+}
+
+.legend{
+    margin-top: 80px;
+
+    width: 150px;
+    height: 60px;
+
+    border: 0;
+    border-radius: 50px;
+    background-color: var(--green3);
+    color: var(--text-w);
+
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mapHover{
+    grid-area: maps;
+    width: 620px;
+    height: 460px;
+    position: relative;
+}
+
+.map{
+    width: 600px;
+    height: 440px;
+    transform-origin: left top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    transition: 0.1s;
+}   
+
+.mapHover:hover .map{
+    width: 620px;
+    height: 460px;
+}
+
+.mapShadow{
+    width: 600px;
+    height: 440px;
+    position: absolute;
+    background-color: #12362B;
+    bottom: 0;
+    right: 0;
+}
+
+.mapText{
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(48, 48, 48, 0.5);
+    color: var(--text-w);
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Poppins";
+    font-size: 27px;
+    text-decoration: none;
+
+    transition: 0.1s;
+}
+
+.mapHover:hover .mapText{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease-out;
+}
+
+.overlayDiv{
+    background-color: #ffffff;
+    width: 865px;
+    height: 500px;
+
+    padding: 40px;
+    border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: translateY(100vh);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.overlay p {
+    width: 500px;
+    
+    color: #121212;
+    
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.overlay.active .overlayDiv {
+    transform: translateY(0);
+}
