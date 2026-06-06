@@ -172,7 +172,7 @@ body{
     z-index: 0;
 
     width: 100%;
-    height: 1200px;
+    padding: 100px 0;
 
     background: linear-gradient(#121212, #191B1B);
 
@@ -184,11 +184,14 @@ body{
 
     font-family: "Montserrat";
     font-size: 50px;
+
+    margin-top: 0;
+    margin-bottom: 40px;
 }
 
 .newsMain-wrap{
     width: 1240px;
-    height: 720px;
+    height: auto;
 
     border-radius: 15px;
 
@@ -197,123 +200,123 @@ body{
     padding: 1px;
 }
 
-.newsMain{
-    display: grid;
-    grid-template-areas:
-    "v v v v v" 
-    "arrowR card1 card2 card3 arrowL";
-
+.newsMain {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-
     width: 100%;
     height: 100%;
-
+    background: #121212;
+    padding: 80px 0 60px 0; /* Added top padding to clear space for "vezi toate" */
+    position: relative;
     border-radius: 15px;
-
-    background: #101010;
-    color: white;
 }
 
-.newsMain p{
+/* Absolute position the "vezi toate" link at the top center */
+.newsMain > p {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
     margin: 0;
-
-    grid-area: v;   
-
-    justify-self: center;
-
     color: var(--text-w);
-    top: 0;
-
     text-decoration: underline;
-
     font-family: "Poppins";
     font-size: 16px;
     font-weight: 275;
+    z-index: 5;
 }
 
-.arrow{
-    width: 35px;
-    height: auto;
-    fill: white;
+.carousel-track-container {
+    width: 1128px;
+    overflow: hidden;
+    margin: 0 20px;
+    box-sizing: border-box; /* Force padding inside dimensions */
 }
 
-.arrowR{
-    grid-area: arrowR;
+.carousel-track {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: max-content;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    box-sizing: border-box;
 }
 
-.arrowL{
-    grid-area: arrowL;
-}
-
-.card{
-    margin: 10px;
-
+.card {
     display: flex;
     flex-direction: column;
-    
     align-items: center;
-
+    flex-shrink: 0; 
     width: 356px;
-    height: 620px;
-    border-radius: 18px;
-    background-color: #252626;
+    background-color: #212121; 
+    border-radius: 18px;       
+    padding-bottom: 24px;      
+    margin: 0;
+    
+    /* Active State Control handles opacity transitions */
+    opacity: 0.3; /* Dim non-visible cards slightly more for contrast */
+    transform: scale(0.96);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    box-sizing: border-box;
 }
 
-.card img{
-    margin: 10px;
+/* Brighten exactly the 3 cards within active visibility */
+.card.carousel__item--selected {
+    opacity: 1;
+    transform: scale(1);
+}
 
-    width: 340px;
-    height: 470px;
-
+/* Update image behavior inside the card wrapper */
+.card img {
+    margin: 8px; /* Balanced border gap */
+    width: calc(100% - 16px);
+    height: 380px; /* Reduced slightly to accommodate cards vertically */
     object-fit: cover;
-    object-position: 80% 20%;
-
-    border-radius: 18px;
+    object-position: center;
+    border-radius: 14px; /* Inner rounding matching image_ff742a.jpg */
 }
 
-.card p{
-    max-width: 287px;
-
+/* Style paragraphs inside the container */
+.card p {
+    max-width: 290px;
+    margin: 15px 0; /* Add top/bottom space */
+    color: var(--text-w);
     font-family: "Poppins";
-    font-size: 18px;
-    font-weight: 275;
-
-    align-items: center;
-
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.4;
     text-align: center;
     text-decoration: none;
+    min-height: 48px; /* Keeps text fields aligned regardless of line wrapping */
 }
 
-.l{
-    grid-area: card1;
-}
-
-.c{
-    grid-area: card2;
-}
-
-.r{
-    grid-area: card3;
-}
-
-.card button{
-    margin-top: 8px;
-    width: 127px;
-    height: 45px;
-
+/* Align and clean up button layout */
+.card button {
+    margin-top: auto; /* Pushes button to bottom boundary evenly */
+    width: 140px;
+    height: 42px;
     border: 0;
     border-radius: 8px;
     background-color: var(--green1);
     color: var(--text-w);
-
-    font-size: 18px;
+    font-family: "Poppins";
+    font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, border 0.2s;
 }
 
-.card button:hover{
+.card button:hover {
     background-color: transparent;
-    border: 1px solid var(--green2);
+    border: 1px solid var(--green1);
+    color: var(--green1);
+}
+
+.arrow{
+    width: 35px;
+    height: 35px;
 }
 
 #about{
