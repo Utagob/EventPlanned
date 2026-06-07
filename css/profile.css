@@ -1,0 +1,23 @@
+body{
+    background: #F2F2F2;
+}
+
+.profile{
+    display: flex;
+
+    width: 100% - 40px;
+    height: 200px;
+    background-color: #fff;
+}
+
+.avatar{
+    align-self: center;
+    margin-left: 50px;
+
+    border-radius: 50%;
+
+    width: 150px;
+    height: 150px;
+
+    
+}
