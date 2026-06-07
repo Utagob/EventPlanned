@@ -8,6 +8,10 @@
     --login: #6EC5A0;
 }
 
+html {
+  scroll-behavior:smooth;
+}
+
 * input, button, a{
     cursor: pointer;
 }
