@@ -1,47 +1,95 @@
-.Form{
+* button{
+    cursor: pointer;
+}
+
+.access-form{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: auto;
 
-    display: flex;
+    width: 250px;
+    height: auto;
+
+    display: grid;
+    grid-template-areas: 
+    "form"
+    "home";
+
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    
 
     background-color: rgb(227, 227, 227);
     border-radius: 15px;
 
     padding: 15px;
 }
+
+.open-form{
+    border-radius: 50px;
+
+    margin: 5px;
+
+    width: 200px;
+    height: 40px;
+}
+
+.signup, .login{
+    grid-area: form;
+
+    display: none;
+}
+
+.inactive{
+    justify-self: center;
+    align-self: center;
+
+    width: 100px;
+    height: 20px; 
+
+    font-size: 10px;
+}
+
+.home{
+    grid-area: home;
+}
+
 .Form-input-section{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+    margin: 5px 0;
 }
-.Form-title{
-    margin: 20px;
-    font-size: 3em;
-}
+
 .Form-input-section input{
-    padding: 10px;
     border-radius: 20px;
+    padding-left: 10px;
+
+    width: 160px;
+    height: 30px;
+
+    justify-self: center;
+    align-self: center;
 }
+
 .Form-input-section button{
     background-color: rgb(227, 227, 227);
     padding: 10px;
     border-radius: 20px;
 }
+
 .Form-input-section button:hover{
     background-color: rgb(255, 255, 255);
 }
+
 .form-success{
     color: rgb(12, 196, 12);
     font-weight: bold;
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
 }
+
 .form-error{
     color: red;
     font-weight: bold;
