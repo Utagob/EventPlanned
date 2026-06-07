@@ -3,14 +3,18 @@ require_once "include/config_session.inc.php";
 require_once "include/login_view.inc.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['accountbtn'])) {
-        header('Location: login.php');
+    if (isset($_POST['submit'])) {
+        if($_SESSION !== ""){
+            header('Location: profile.php');
+        } else {
+            header('Location: register.php');
+        }
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 
 <head>
     <title>EventPlanned</title>
@@ -40,31 +44,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
             <div class="language">
                 <select name="languageSelect">
-                    <option value="RO">RO</option>
-                    <option value="RU">RU</option>
-                    <option value="EN">EN</option>
+                    <option value="En">En</option>
+                    <option value="RU">Ru</option>
+                    <option value="RO">Ro</option>
                 </select>
             </div>
         </div>
         <div class="right">
             <form class="account" method="POST">
-                <input type="submit" name="accountbtn" class="accountInput" value="Login">
-                <?php output_avatar();?>
+                <button type="submit" name="submit" style="padding: 0; border: none; background: transparent">
+                    <img <?php output_avatar();?>>
+                </button>
             </form>
             <form class="themeButton">
                 <img src="image/moon.svg" class="themeButtonImg">
             </form>
         </div>
         <div class="categories">
-            <button class="categoriesButton">Concerte</button>
-            <button class="categoriesButton">Festivaluri</button>
-            <button class="categoriesButton">Expoziții</button>
-            <button class="categoriesButton">Spectacole</button>
-            <button class="categoriesButton">Sport</button>
+            <button class="categoriesButton">Concertes</button>
+            <button class="categoriesButton">Festivals</button>
+            <button class="categoriesButton">Expositions</button>
+            <button class="categoriesButton">Acts</button>
+            <button class="categoriesButton">Sports</button>
             <select name="categorySelect">
-                <option value="">Mai multe</option>
+                <option value="">More</option>
                 <option value="Training">Training</option>
-                <option value="PentruCopii">Pentru Copii</option>
+                <option value="PentruCopii">For kids</option>
             </select>
         </div>
     </header>
@@ -95,6 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     ?> -->
 
+<script src="js/script.js"></script>
 </body>
-
 </html>

@@ -27,8 +27,8 @@ function check_login_errors(){
 include('login_contr.inc.php');
 function output_avatar(){
     if(isset($_SESSION["user_id"])){
-        echo '<img style="border-radius: 50%;" src="' . make_avatar($_SESSION['user_username'][0]) . '">';
+        echo 'src="' . make_avatar($_SESSION['user_username'][0]) . '" style="border-radius: 50%; width: 35px; height: 35px;"';
     } else {
-        echo '<img style="width: 35px; height: 35px;" src="image/account.svg">';
+        echo 'src="image/account.svg" style="width: 35px; height: 35px;" ';
     }
 }
