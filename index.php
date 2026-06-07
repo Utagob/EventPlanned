@@ -4,7 +4,7 @@ require_once "include/login_view.inc.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['submit'])) {
-        if($_SESSION !== ""){
+        if(isset($_SESSION['user_id'])){
             header('Location: profile.php');
         } else {
             header('Location: register.php');
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="right">
             <form class="account" method="POST">
                 <button type="submit" name="submit" style="padding: 0; border: none; background: transparent">
-                    <img <?php output_avatar();?>>
+                    <img <?php output_avatar(); ?>>
                 </button>
             </form>
             <form class="themeButton">

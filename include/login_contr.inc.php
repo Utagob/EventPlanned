@@ -31,9 +31,9 @@ function make_avatar($character){
     $path = "avatar/" . $filename;
 
     if(!is_readable($path)){
-        $canvasWidth = 35;
-        $canvasHeight = 35;
-        $fontSize = 15;
+        $canvasWidth = 150;
+        $canvasHeight = 150;
+        $fontSize = 65;
         $fontPath = getcwd() . "/css/OpenSans.ttf";
 
         $image = imagecreate($canvasWidth, $canvasHeight); 
