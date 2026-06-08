@@ -17,62 +17,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EventPlanned</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="theme" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo">LOGO</div>
-        <div class="center">
-            <form class="form">
-                <button>
-                    <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
-                        aria-labelledby="search">
-                        <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                            stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                    </svg>
-                </button>
-                <input class="input" placeholder="Caută" required="" type="text">
-                <button class="reset" type="reset">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </form>
-            <div class="language">
-                <select name="languageSelect">
-                    <option value="En">En</option>
-                    <option value="RU">Ru</option>
-                    <option value="RO">Ro</option>
-                </select>
-            </div>
-        </div>
-        <div class="right">
-            <form class="account" method="POST">
-                <button type="submit" name="submit" style="padding: 0; border: none; background: transparent">
-                    <img <?php output_avatar(); ?>>
-                </button>
-            </form>
-            <form class="themeButton">
-                <img src="image/moon.svg" class="themeButtonImg">
-            </form>
-        </div>
-        <div class="categories">
-            <button class="categoriesButton">Concertes</button>
-            <button class="categoriesButton">Festivals</button>
-            <button class="categoriesButton">Expositions</button>
-            <button class="categoriesButton">Acts</button>
-            <button class="categoriesButton">Sports</button>
-            <select name="categorySelect">
-                <option value="">More</option>
-                <option value="Training">Training</option>
-                <option value="PentruCopii">For kids</option>
-            </select>
-        </div>
-    </header>
+    <?php
+    include('header.php');
+    ?>
 
     <div class="showcase">
         <img src="image/eveniment2.webp" class="img1">
@@ -80,26 +36,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img src="image/eveniment3.jpg" class="img3">
     </div>
 
-    <!-- <?php
+    <div class="events">
+        <div class="eventsSection">
+            <h3>Popular events</h3>
+            <div class="event">
+                <p class="eventInfo">
+                    <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.4 6.6H8.4V9.6H5.4V6.6ZM9.6 1.2H9V0H7.8V1.2H3V0H1.8V1.2H1.2C0.54 1.2 0 1.74 0 2.4V10.8C0 11.46 0.54 12 1.2 12H9.6C10.26 12 10.8 11.46 10.8 10.8V2.4C10.8 1.74 10.26 1.2 9.6 1.2ZM9.6 2.4V3.6H1.2V2.4H9.6ZM1.2 10.8V4.8H9.6V10.8H1.2Z" fill="black"/>
+                    </svg>
+                    5-6 Octombrie
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.80032 6.12519C9.80032 4.77152 8.70391 3.67511 7.35024 3.67511C5.99657 3.67511 4.90016 4.77152 4.90016 6.12519C4.90016 7.47886 5.99657 8.57527 7.35024 8.57527C8.70391 8.57527 9.80032 7.47886 9.80032 6.12519ZM6.1252 6.12519C6.1252 5.45142 6.67647 4.90015 7.35024 4.90015C8.02401 4.90015 8.57528 5.45142 8.57528 6.12519C8.57528 6.79896 8.02401 7.35023 7.35024 7.35023C6.67647 7.35023 6.1252 6.79896 6.1252 6.12519Z" fill="black"/>
+                        <path d="M6.99497 13.3591C7.0991 13.4326 7.22773 13.4755 7.35024 13.4755C7.47274 13.4755 7.60137 13.4387 7.7055 13.3591C7.88925 13.2243 12.2688 10.0698 12.2504 6.11909C12.2504 3.41788 10.0514 1.21893 7.35024 1.21893C4.64902 1.21893 2.45008 3.41788 2.45008 6.11909C2.4317 10.0637 6.81122 13.2243 6.99497 13.3591ZM7.35024 2.4501C9.37768 2.4501 11.0254 4.09778 11.0254 6.12522C11.0376 8.8448 8.33639 11.2888 7.35024 12.0912C6.36408 11.2888 3.66287 8.85093 3.67512 6.12522C3.67512 4.09778 5.3228 2.4501 7.35024 2.4501Z" fill="black"/>
+                    </svg>
+                    Chisinau
+                </p>
+                <p class="eventTitle">Ziua Vinului</p>
+                <div class="eventIlustration">
+                    <p class="price">135MDL</p>
+                    <svg class="eventHeart" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.1 16.9482L10 17.0572L9.89 16.9482C5.14 12.2507 2 9.14441 2 5.99455C2 3.81471 3.5 2.17984 5.5 2.17984C7.04 2.17984 8.54 3.26975 9.07 4.75204H10.93C11.46 3.26975 12.96 2.17984 14.5 2.17984C16.5 2.17984 18 3.81471 18 5.99455C18 9.14441 14.86 12.2507 10.1 16.9482ZM14.5 0C12.76 0 11.09 0.882834 10 2.26703C8.91 0.882834 7.24 0 5.5 0C2.42 0 0 2.6267 0 5.99455C0 10.1035 3.4 13.4714 8.55 18.5613L10 20L11.45 18.5613C16.6 13.4714 20 10.1035 20 5.99455C20 2.6267 17.58 0 14.5 0Z" fill="black"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    $contents = file_get_contents("data/items.json");
+    <?php
+        include('footer.php');
+    ?>
 
-    try {
-
-        $data = json_decode($contents, flags: JSON_THROW_ON_ERROR);
-
-    } catch (JsonException $e) {
-
-        exit($e->getMessage());
-
-    }
-
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
-
-    ?> -->
-
+<script src="js/theme.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

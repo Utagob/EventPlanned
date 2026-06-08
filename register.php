@@ -16,9 +16,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link id="theme" rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
+    <div class="themeButton">
+        <button type="submit" name="theme" style="padding: 0; border: none; background: transparent">
+            <img src="image/moon.svg" class="themeButtonImg">
+        </button>
+    </div>
+
     <div class="access-form" method="POST">
         <div class="signup">
             <form action="include/signup.inc.php" method="POST" class="Form-input-section">
@@ -42,6 +49,7 @@
         </form>
     </div>
 
+<script src="js/theme.js"></script>
 <script src="js/register.js"></script>
 </body>
 </html>

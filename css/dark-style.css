@@ -1,11 +1,9 @@
 :root{
-    --background: #FFF;
+    --background: #2d2d2d;
     --section-bg: #D4D4D4;
     --button-bg: #C1C1C1;
     --button-hover-bg: #bdbdbd;
     --search-color: #8b8ba7;
-    --border: #000;
-    --text: #000;
 }
 
 body{
@@ -14,6 +12,10 @@ body{
 
 header{
     background: var(--background);
+}
+
+.logo{
+    background-color: aliceblue;
 }
 
 .form button {
@@ -25,12 +27,16 @@ header{
     background: var(--input-bg,#fff);
 }
 
-.language{
-    border: 1px solid var(--border);
-}
-
 .language select{
     background: var(--background);
+}
+
+.account:hover{
+    background: var(--button-hover-bg);
+}
+
+.themeButton:hover{
+    background: var(--button-hover-bg);
 }
 
 .categoriesButton{
@@ -83,12 +89,4 @@ header{
 
 .myLikedEvents{
     background: var(--section-bg);
-}
-
-footer{
-    background: var(--background);
-}
-
-footer a{
-    color: var(--text);
 }
