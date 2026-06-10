@@ -1,78 +1,22 @@
-<?php
-require_once "include/config_session.inc.php";
-require_once "include/login_view.inc.php";
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['submit'])) {
-        if(isset($_SESSION['user_id'])){
-            header('Location: profile.php');
-        } else {
-            header('Location: register.php');
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EventPlanned</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link id="theme" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Intel+One+Mono:ital,wght@0,300..700;1,300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <div class="logo">LOGO</div>
-        <div class="center">
-            <form class="form">
-                <button>
-                    <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img"
-                        aria-labelledby="search">
-                        <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9"
-                            stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round">
-                        </path>
-                    </svg>
-                </button>
-                <input class="input" placeholder="Caută" required="" type="text">
-                <button class="reset" type="reset">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </form>
-            <div class="language">
-                <select name="languageSelect">
-                    <option value="En">En</option>
-                    <option value="RU">Ru</option>
-                    <option value="RO">Ro</option>
-                </select>
-            </div>
-        </div>
-        <div class="right">
-            <form class="account" method="POST">
-                <button type="submit" name="submit" style="padding: 0; border: none; background: transparent">
-                    <img <?php output_avatar(); ?>>
-                </button>
-            </form>
-            <form class="themeButton">
-                <img src="image/moon.svg" class="themeButtonImg">
-            </form>
-        </div>
-        <div class="categories">
-            <button class="categoriesButton">Concertes</button>
-            <button class="categoriesButton">Festivals</button>
-            <button class="categoriesButton">Expositions</button>
-            <button class="categoriesButton">Acts</button>
-            <button class="categoriesButton">Sports</button>
-            <select name="categorySelect">
-                <option value="">More</option>
-                <option value="Training">Training</option>
-                <option value="PentruCopii">For kids</option>
-            </select>
-        </div>
-    </header>
+    <?php
+    include('header.php');
+    ?>
 
     <div class="showcase">
         <img src="image/eveniment2.webp" class="img1">
@@ -80,26 +24,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <img src="image/eveniment3.jpg" class="img3">
     </div>
 
-    <!-- <?php
+    <div class="event-items">
+        <?php
+            include('include/events.inc.php');
+        ?>
+    </div>
 
-    $contents = file_get_contents("data/items.json");
+    <section class="cta-banner">
+        <div class="cta-content">
+            <h2>Fă-ți evenimentul cunoscut!</h2>
+            <p>Adaugă evenimentul tău pe platformă și ajungi la mii de oameni interesați.</p>
+        </div>
+        <form method="POST">
+            <button href="createEvent.php" class="cta-btn" name="cta-btn">+ Începe acum</button>
+        </form>
+    </section>
 
-    try {
+    <?php
+        include('footer.php');
+    ?>
 
-        $data = json_decode($contents, flags: JSON_THROW_ON_ERROR);
+    <?php if (!isset($_SESSION['user_id'])): ?>
+        <div id="accountModal" class="modal-overlay" style="display: none;">
+            <div class="access-form">
+                <div class="signup">
+                    <form action="include/signup.inc.php" method="POST" class="Form-input-section">
+                        <?php signup_inputs(); ?>
+                        <button>Sign Up</button>
+                    </form>
+                    <?php check_signup_errors(); ?>
+                </div>
+                <div class="login">
+                    <form action="include/login.inc.php" method="POST" class="Form-input-section">
+                        <input type="text" name="username" placeholder="Username">
+                        <input type="password" name="pwd" placeholder="Password">
+                        <button>Log In</button>
+                    </form>
+                    <?php check_login_errors(); ?>
+                </div>
+                <button class="open-form" name="signup">Sign Up</button>
+                <button class="open-form" name="login">Log In</button>
+            </div>
+        </div>
+    <?php endif; ?>
 
-    } catch (JsonException $e) {
-
-        exit($e->getMessage());
-
-    }
-
-    echo "<pre>";
-    print_r($data);
-    echo "</pre>";
-
-    ?> -->
-
-<script src="js/script.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

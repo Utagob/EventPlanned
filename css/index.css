@@ -1,0 +1,576 @@
+* button{
+    cursor: pointer;
+}
+
+body{
+    margin: 0;
+}
+
+header{
+    display: grid;
+    grid-template-areas: 
+    "logo center right"
+    "categories categories categories";
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 3fr 2fr;
+    align-items: center;
+    padding-bottom: 10px;
+
+    position: sticky;
+    top: 0;
+    z-index: 5;
+
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.logo{
+    display: flex;
+    grid-area: logo;
+    align-items: center;
+
+    height: 50px;
+    width: 180px;
+
+    font-size: 40px;
+}
+
+.center{
+    grid-area: center;
+    justify-self: center;
+    align-items: center;
+}
+
+.form button {
+    border: none;
+    background: none;
+    color: var(--search-color);
+}
+
+.form {
+    --timing: 0.3s;
+    --width-of-input: 520px;
+    --height-of-input: 50px;
+    --border-height: 2px;
+    --input-bg: var(--section-bg);
+    --border-radius: 30px;
+    grid-area: search;
+    position: relative;
+    width: var(--width-of-input);
+    height: var(--height-of-input);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.8em;
+    border-radius: var(--border-radius);
+}
+
+.input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+}
+
+.form:before {
+    content: "";
+    position: absolute;
+    background: transparent;
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: var(--border-height);
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+input:not(:placeholder-shown) ~ .reset {
+    opacity: 1;
+    visibility: visible;
+}
+
+.form svg {
+    width: 17px;
+    margin-top: 3px;
+}
+
+.right{
+    grid-area: right;
+    justify-content: end;
+    align-items: center;
+
+    display: grid;
+    grid-template-areas: 
+    "language account theme";
+}
+
+.language{
+    grid-area: language;
+    margin: 2px;
+
+    width: 80px;
+    height: 40px;
+    border-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language button{
+    display: flex;
+    align-items: center; 
+    gap: 5px; 
+    background: transparent; 
+    border: none; 
+    cursor: pointer; 
+    color: inherit; 
+    font: inherit;
+}
+
+.language button:hover{
+    transform: scale(1.2);
+    gap: 0; 
+}
+
+.account{
+    grid-area: account;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.loggedOutAvatar{
+    width: 35px; 
+    height: 35px;
+}
+
+.account:hover .loggedOutAvatar{
+    width: 40px; 
+    height: 40px;
+}
+
+.loggedInAvatar{
+    border-radius: 50%; 
+    width: 35px; 
+    height: 35px;
+}
+
+.account:hover .loggedInAvatar{
+    width: 40px; 
+    height: 40px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(6px);
+    z-index: 999; 
+    transition: all 0.2s ease-in-out;
+}
+
+.access-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: auto;
+    display: grid;
+    grid-template-areas: 
+    "form"
+    "home";
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--section-bg, #fff);
+    box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+}
+
+.open-form {
+    border-radius: 50px;
+    margin: 5px;
+    width: 200px;
+    height: 40px;
+}
+
+.signup, .login {
+    display: none; 
+}
+
+.open-form {
+    display: block;
+    border-radius: 50px;
+    margin: 5px;
+    width: 200px;
+    height: 40px;
+}
+
+.inactive {
+    justify-self: center;
+    align-self: center;
+    width: 100px;
+    height: 20px; 
+    font-size: 10px;
+}
+
+.home {
+    grid-area: home;
+}
+
+.Form-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.Form-input-section input {
+    border-radius: 20px;
+    padding-left: 10px;
+    width: 160px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+}
+
+.Form-input-section button {
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.themeButton{
+    grid-area: theme;
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.themeButton:hover{
+    cursor: pointer;
+}
+
+.themeButtonImg{
+    width: 35px;
+    height: 35px;
+}
+
+.themeButton:hover .themeButtonImg{
+    width: 40px;
+    height: 40px;
+}
+
+.categories{
+    grid-area: categories;
+
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.categoriesButton{
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.categoriesButton:hover{
+    font-size: 24px;
+}
+
+.categories select{
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.categories select:hover{
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.showcase{
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    padding: 20px;
+}
+
+.img1{
+    width: 621px;
+    height: 440px;
+    opacity: 0.6;
+    border-radius: 10px;
+}
+
+.img2{
+    width: 794px;
+    height: 480px;
+    z-index: 1;
+    border-radius: 10px;
+
+    margin-left: -25%;
+    margin-right: -25%;
+}
+
+.img3{
+    width: 621px;
+    height: 440px;
+    opacity: 0.6;
+    border-radius: 10px;
+}
+
+.event-items {
+    margin: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    width: 100%;
+}
+
+/* New CSS Rules for the labeled sections */
+.category-section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.category-title {
+    font-size: 28px;
+    margin: 0 0 10px 20px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* Wrapper to position arrows relative to the container */
+.scroll-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Styling the navigation arrow circles */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--button-bg);
+    color: var(--text);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scroll-arrow:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-arrow {
+    left: -15px;
+}
+
+.right-arrow {
+    right: 25px;
+}
+
+.category-scroll-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 5px;
+    width: 100%;
+}
+
+.category-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.category-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--button-bg);
+    border-radius: 10px;
+}
+
+.category-scroll-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.event {
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+    position: relative;
+    padding: 12px;
+    box-sizing: border-box;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end; 
+}
+
+.event-meta-row,
+.event-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.event-details-row {
+    align-items: flex-end;
+}
+
+.eventInfo {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden;   
+    text-overflow: ellipsis;
+}
+
+.eventHeart {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;   
+    flex-shrink: 0;  
+}
+
+.eventTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.price {
+    margin: 0 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;     
+}
+
+.eventHeart{
+    grid-area: info;
+
+    justify-self: self-end;
+    align-self: end;
+}
+
+.eventHeart:hover{
+    cursor: pointer;
+}
+
+.cta-banner {
+    margin: 50px auto 20px auto;
+    padding: 35px 45px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.cta-content h2 {
+    margin: 0 0 6px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.cta-content p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-2);
+}
+
+.cta-btn {
+    background-color: var(--button-bg);
+    color: var(--text);
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    transform-origin: center;
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+}
+
+.cta-btn:active {
+    transform: scale(0.97);
+}

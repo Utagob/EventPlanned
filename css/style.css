@@ -1,255 +1,135 @@
-body{
-    background-color: #FFFBDA;
-    margin: 0;
+:root{
+    --background: #FFF;
+    --section-bg: #02d7e6;
+    --button-bg: #03cad8;
+    --button-hover-bg: #bdbdbd;
+    --search-color: #8b8ba7;
+    --border: #000;
+    --text: #000;
+    --text-2: rgba(0, 0, 0, 0.5);
+    --white: #fff;
 }
 
-header{
-    display: grid;
-    grid-template-areas: 
-    "logo center right"
-    "categories categories categories";
-    grid-template-columns: 1fr 3fr 1fr;
-    align-items: center;
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo{
-    background-color: aliceblue;
-
-    display: flex;
-    grid-area: logo;
-    align-items: center;
-
-    height: 50px;
-    width: 180px;
+body {
+    background: var(--background);
+    color: var(--text);
 }
 
-.center{
-    display: flex;
-    grid-area: center;
-    justify-self: center;
-    align-items: center;
-
-    display: grid;
-    grid-template-areas: 
-    "search language";
+header {
+    background: var(--background);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-/*search bar*/
-.form button {
-  border: none;
-  background: none;
-  color: #8b8ba7;
+.logo {
+    color: var(--text);
 }
 
 .form {
-  --timing: 0.3s;
-  --width-of-input: 520px;
-  --height-of-input: 50px;
-  --border-height: 2px;
-  --input-bg: #FFEC9E;
-  --border-radius: 30px;
-  grid-area: search;
-  position: relative;
-  width: var(--width-of-input);
-  height: var(--height-of-input);
-  display: flex;
-  align-items: center;
-  padding-inline: 0.8em;
-  border-radius: var(--border-radius);
-  background: var(--input-bg,#fff);
+    background: var(--section-bg);
 }
 
-.input {
-  font-size: 0.9rem;
-  background-color: transparent;
-  width: 100%;
-  height: 100%;
-  padding-inline: 0.5em;
-  padding-block: 0.7em;
-  border: none;
-}
-
-.form:before {
-  content: "";
-  position: absolute;
-  background: var(--border-color);
-  transform: scaleX(0);
-  transform-origin: center;
-  width: 100%;
-  height: var(--border-height);
-  left: 0;
-  bottom: 0;
-  border-radius: 1px;
-}
-
-input:focus {
-  outline: none;
-}
-
-.reset {
-  border: none;
-  background: none;
-  opacity: 0;
-  visibility: hidden;
-}
-
-input:not(:placeholder-shown) ~ .reset {
-  opacity: 1;
-  visibility: visible;
+.form button {
+    color: var(--search-color);
 }
 
 .form svg {
-  width: 17px;
-  margin-top: 3px;
+    stroke: var(--search-color);
 }
 
-.language{
-    margin: 5px;
-    grid-area: language;
+.input {
+    color: var(--text);
 }
 
-.language select{
-    background-color: #FFFBDA;
-    font-size: 32px;    
-
-    border: none;
-    appearance: none;
+.input::placeholder {
+    color: var(--search-color);
+    opacity: 0.8;
 }
 
-.language select::picker(select){
-    outline: 0;
+.reset svg {
+    stroke: var(--search-color);
 }
 
-.language option{
-    border: none;
-    
+.language {
+    border: 1px solid var(--border);
 }
 
-.right{
-    display: flex;
-    grid-area: right;
-    justify-content: right;
-    align-items: center;
-
-    display: grid;
-    grid-template-areas: 
-    "account theme";
+.language:hover{
+    background-color: var(--section-bg);
 }
 
-.account{
-    grid-area: account;
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
+.categoriesButton {
+    background: var(--button-bg);
 }
 
-.account:hover{
-    background-color: #FFEC9E;
-    cursor: pointer;
-    border-radius: 5px;
+.categories select {
+    background: var(--button-bg);
 }
 
-.loggedInAvatar{
-    border-radius: 50%; 
-    width: 35px; 
-    height: 35px;
+.showcase {
+    background: var(--section-bg);
 }
 
-.loggedOutAvatar{
-    width: 35px; 
-    height: 35px;
+.event {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--section-bg)), var(--event-img);
+    border: 3px solid var(--section-bg);
 }
 
-.themeButton{
-    grid-area: theme;
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px;
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.themeButton:hover{
-    background-color: #FFEC9E;
-    cursor: pointer;
-    border-radius: 5px;
+.access-form {
+    background-color: var(--section-bg);
 }
 
-.themeButtonImg{
-    color: black;
-    width: 40px;
-    height: 40px;
+.Form-input-section input {
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text);
 }
 
-.categories{
-    grid-area: categories;
-    justify-self: center;
+.Form-input-section input::placeholder {
+    color: var(--search-color);
 }
 
-.categoriesButton{
-    background: linear-gradient(to right, #FFEC9E, #FFBB70);
-    border-radius: 5px;
-    border: none;
-    font-size: 24px;
-    padding: 5px;
-    margin: 5px;
+.Form-input-section button {
+    background: var(--white);
+    color: var(--text);
 }
 
-.categoriesButton:hover{
-    cursor: pointer;
+.Form-input-section button:hover {
+    background-color: var(--button-hover-bg);
+    color: #090e1a;
 }
 
-.categories select{
-    background: linear-gradient(to right, #FFEC9E, #FFBB70);
-    border-radius: 5px;
-    border: none;
-    font-size: 24px;
-    padding: 5px;
-    margin: 5px;
+.Logout button {
+    background: var(--section-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
 }
 
-.categories select:hover{
-    cursor: pointer;
+.Logout button:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
 }
 
-.showcase{
-    margin-top: 40px;
-
-    display: flex;
-    flex-direction: row;
-
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
+.cta-banner{
+    background-image: linear-gradient(to right, var(--button-bg), rgba(255, 255, 255, 0.1)), url(../image/event.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
-.img1{
-    width: 621px;
-    height: 440px;
-    opacity: 0.6;
-    border-radius: 10px;
+footer {
+    background: var(--background);
+    box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.7);
 }
 
-.img2{
-    width: 794px;
-    height: 480px;
-    z-index: 1;
-    border-radius: 10px;
-
-    margin-left: -25%;
-    margin-right: -25%;
-}
-
-.img3{
-    width: 621px;
-    height: 440px;
-    opacity: 0.6;
-    border-radius: 10px;
+.footer-title {
+    color: var(--text);
+    border-bottom: 3px solid var(--button-bg);
 }
