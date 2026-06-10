@@ -12,11 +12,13 @@ header{
     "logo center right"
     "categories categories categories";
     grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 3fr 2fr;
     align-items: center;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 
-    position: relative;
-    z-index: 3;
+    position: sticky;
+    top: 0;
+    z-index: 5;
 
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
@@ -117,7 +119,7 @@ input:not(:placeholder-shown) ~ .reset {
 
 .language{
     grid-area: language;
-    margin: 5px;
+    margin: 2px;
 
     width: 80px;
     height: 40px;
@@ -128,20 +130,20 @@ input:not(:placeholder-shown) ~ .reset {
     align-items: center;
 }
 
-.language select{
-    font-size: 20px;    
-
-    border: none;
-    appearance: none;
+.language button{
+    display: flex;
+    align-items: center; 
+    gap: 5px; 
+    background: transparent; 
+    border: none; 
+    cursor: pointer; 
+    color: inherit; 
+    font: inherit;
 }
 
-.language select::picker(select){
-    outline: 0;
-}
-
-.language option{
-    border: none;
-    
+.language button:hover{
+    transform: scale(1.2);
+    gap: 0; 
 }
 
 .account{
@@ -175,6 +177,89 @@ input:not(:placeholder-shown) ~ .reset {
 .account:hover .loggedInAvatar{
     width: 40px; 
     height: 40px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(6px);
+    z-index: 999; 
+    transition: all 0.2s ease-in-out;
+}
+
+.access-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: auto;
+    display: grid;
+    grid-template-areas: 
+    "form"
+    "home";
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--section-bg, #fff);
+    box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+}
+
+.open-form {
+    border-radius: 50px;
+    margin: 5px;
+    width: 200px;
+    height: 40px;
+}
+
+.signup, .login {
+    display: none; 
+}
+
+.open-form {
+    display: block;
+    border-radius: 50px;
+    margin: 5px;
+    width: 200px;
+    height: 40px;
+}
+
+.inactive {
+    justify-self: center;
+    align-self: center;
+    width: 100px;
+    height: 20px; 
+    font-size: 10px;
+}
+
+.home {
+    grid-area: home;
+}
+
+.Form-input-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 5px 0;
+}
+
+.Form-input-section input {
+    border-radius: 20px;
+    padding-left: 10px;
+    width: 160px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+}
+
+.Form-input-section button {
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .themeButton{
@@ -272,105 +357,220 @@ input:not(:placeholder-shown) ~ .reset {
     border-radius: 10px;
 }
 
-.events{
+.event-items {
+    margin: 20px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
+    gap: 35px;
+    width: 100%;
 }
 
-.eventsSection{
-    display: grid;
-    grid-template-rows: 1fr 3fr;
-    padding: 15px;
+/* New CSS Rules for the labeled sections */
+.category-section {
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.eventsSection h3{
-    grid-row: 1/2;
-
-    font-size: 48px;
-
-    margin: 0;
-    justify-self: center;
-    align-self: center;
+.category-title {
+    font-size: 28px;
+    margin: 0 0 10px 20px;
+    font-weight: 600;
+    color: var(--text);
 }
 
-.event{
-    width: 240px;
-    height: 180px;
-
-    border-radius: 18px;
+/* Wrapper to position arrows relative to the container */
+.scroll-wrapper {
     position: relative;
-    padding: 10px 30px;
-
-    display: grid;
-    grid-template-areas: 
-    "info"
-    "title"
-    "ilustration";
-    grid-template-rows: 1fr 1fr 3fr;
-    grid-template-columns: 1fr;
-
-    justify-content: start;
-    align-items: center;
-}
-
-.event p{
-    margin: 0;
-}
-
-.eventInfo{
-    grid-area: info;
-
-    text-align: center;
-    font-size: 16px;
-
     display: flex;
-
+    align-items: center;
+    width: 100%;
 }
 
-.eventTitle{
-    grid-area: title;
-
-    font-size: 24px;
+/* Styling the navigation arrow circles */
+.scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--button-bg);
+    color: var(--text);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.eventIlustration{
-    grid-area: ilustration;
+.scroll-arrow:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-50%) scale(1.1);
+}
 
-    width: 90%;
-    height: 90%;
+.left-arrow {
+    left: -15px;
+}
 
-    background: url(../data/image/ziuaVinului.jpg);
-    background-size: cover;
-    margin: 0;
-    padding: 0;
+.right-arrow {
+    right: 25px;
+}
 
-    border-radius: 12px;
-
-    padding: 10px;
-
+.category-scroll-container {
     display: flex;
     flex-direction: row;
-    justify-content: end;
-    align-items: end;
-
-    gap: 5px;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 5px;
+    width: 100%;
 }
 
-.price{
-    width: auto;
-    height: auto;
+.category-scroll-container::-webkit-scrollbar {
+    display: none;
+}
 
-    padding: 5px;
+.category-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--button-bg);
+    border-radius: 10px;
+}
 
-    border-radius: 12px;
+.category-scroll-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
 
-    font-size: 12px;
+.event {
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+    position: relative;
+    padding: 12px;
+    box-sizing: border-box;
 
-    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end; 
+}
+
+.event-meta-row,
+.event-details-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.event-details-row {
+    align-items: flex-end;
+}
+
+.eventInfo {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden;   
+    text-overflow: ellipsis;
+}
+
+.eventHeart {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 8px;   
+    flex-shrink: 0;  
+}
+
+.eventTitle {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.price {
+    margin: 0 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;     
+}
+
+.eventHeart{
+    grid-area: info;
+
+    justify-self: self-end;
+    align-self: end;
 }
 
 .eventHeart:hover{
-    background: red;
-    border-radius: 50%;
     cursor: pointer;
+}
+
+.cta-banner {
+    margin: 50px auto 20px auto;
+    padding: 35px 45px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.cta-content h2 {
+    margin: 0 0 6px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.cta-content p {
+    margin: 0;
+    font-size: 16px;
+    color: var(--text-2);
+}
+
+.cta-btn {
+    background-color: var(--button-bg);
+    color: var(--text);
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    transform-origin: center;
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+}
+
+.cta-btn:active {
+    transform: scale(0.97);
 }

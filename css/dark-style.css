@@ -1,92 +1,193 @@
-:root{
-    --background: #2d2d2d;
-    --section-bg: #D4D4D4;
-    --button-bg: #C1C1C1;
-    --button-hover-bg: #bdbdbd;
-    --search-color: #8b8ba7;
+:root {
+    --background: #090e1a;
+    --section-bg: #131a2c;
+    --button-bg: rgb(1, 19, 78);
+    --button-hover-bg: #38bdf8;
+    --search-color: #94a3b8;
+    --border: #222f4b;
+    --text: #ffffff;
+    --text-2: rgba(255, 255, 255, 0.65);
 }
 
-body{
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
     background: var(--background);
+    color: var(--text);
 }
 
-header{
+header {
     background: var(--background);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
-.logo{
-    background-color: aliceblue;
+.logo {
+    color: var(--text);
+}
+
+.form {
+    background: #1a2336;
+    border: 1px solid var(--border);
 }
 
 .form button {
     color: var(--search-color);
 }
 
-.form {
-    --input-bg: var(--section-bg);
-    background: var(--input-bg,#fff);
+.form svg {
+    stroke: var(--search-color);
 }
 
-.language select{
-    background: var(--background);
+.input {
+    color: var(--text);
 }
 
-.account:hover{
+.input::placeholder {
+    color: var(--search-color);
+    opacity: 0.8;
+}
+
+.reset svg {
+    stroke: var(--search-color);
+}
+
+.language {
+    background: #1a2336;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.language button {
+    color: var(--text) !important;
+}
+
+.language button id[langLabel] {
+    color: var(--text);
+}
+
+.categoriesButton {
+    background: var(--border);
+    color: var(--text);
+    transition: background 0.2s ease, color 0.2s ease, font-size 0.2s ease;
+}
+
+.categoriesButton:hover {
     background: var(--button-hover-bg);
+    color: #090e1a;
 }
 
-.themeButton:hover{
+.categories select {
+    background: var(--border);
+    color: var(--text);
+}
+
+.categories select option {
+    background: var(--section-bg);
+    color: var(--text);
+}
+
+.showcase {
+    background: linear-gradient(135deg, #060b15, #0f1c33, #1e3a8a);
+    border-bottom: 1px solid var(--border);
+}
+
+.eventsSection h3 {
+    color: var(--text);
+}
+
+.event {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.eventInfo {
+    color: var(--text-2);
+}
+
+.eventTitle {
+    color: var(--text);
+}
+
+.price {
     background: var(--button-hover-bg);
+    color: #090e1a;
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
 }
 
-.categoriesButton{
-    background: var(--button-bg);
+.modal-overlay {
+    background-color: rgba(5, 8, 16, 0.6);
 }
 
-.categories select{
-    background: var(--button-bg);
-}
-
-.showcase{
-    background: var(--section-bg);
-}
-
-.event{
-    background: var(--section-bg);
-}
-
-.price{
-    background: var(--section-bg);
-}
-
-.access-form{
-    background: var(--section-bg);
-}
-
-.Form-input-section button{
-    background: var(--button-bg);
-}
-
-.Form-input-section button:hover{
-    background-color: var(--button-hover-bg);
-}
-
-.profile{
+.access-form {
     background-color: var(--section-bg);
+    border: 1px solid var(--border);
+    box-shadow: 0px 12px 32px rgba(0, 0, 0, 0.6);
 }
 
-.Logout button{
-    background: var(--background);
+.Form-input-section input {
+    background-color: #1a2336;
+    border: 1px solid var(--border);
+    color: var(--text);
 }
 
-.Logout button:hover{
-    background: var(--button-hover-bg);
+.Form-input-section input::placeholder {
+    color: var(--search-color);
 }
 
-.myEvents{
-    background: var(--section-bg);
+.Form-input-section button {
+    background: var(--button-bg);
+    color: var(--text);
 }
 
-.myLikedEvents{
-    background: var(--section-bg);
+.Form-input-section button:hover {
+    background-color: var(--button-hover-bg);
+    color: #090e1a;
+}
+
+.Logout button {
+    background: #1a2336;
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.Logout button:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+footer {
+    background: #05080f;
+    border-top: 1px solid var(--border);
+    box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.footer-title {
+    color: var(--text);
+    border-bottom: 3px solid var(--button-bg);
+}
+
+footer a {
+    color: var(--text-2);
+    transition: color 0.2s ease, font-size 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--button-hover-bg);
+}
+
+.button-svg path, 
+.button-svg circle, 
+.button-svg rect {
+    fill: var(--text);
+    stroke: transparent;
+}
+
+.button-svg[fill="none"] path {
+    fill: none;
+    stroke: var(--text);
 }

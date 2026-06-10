@@ -28,8 +28,8 @@
         </button>
     </div>
     <div class="footer-options">
-        <a href="index.php" date-key="footer_home">Home</a>
-        <a href="" date-key="footer_about_us">About us</a>
-        <a href="" date-key="footer_contact">Contact us</a>
+        <a href="index.php" data-key="footer_home">Home</a>
+        <a href="" data-key="footer_about_us">About us</a>
+        <a href="" data-key="footer_contact">Contact us</a>
     </div>
 </footer>

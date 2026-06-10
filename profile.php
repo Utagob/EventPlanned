@@ -24,8 +24,8 @@
         <div class="info">
             <?php
                 echo '<p>Email: ' . $_SESSION['user_email'] . '</p>';
-                $date = $_SESSION['user_date'];
-                echo '<p>Date: ' . date('d m Y', $date) . '</p>';
+                $date = new DateTime($_SESSION['user_date']);
+                echo '<p>Date: ' . $date->format('d m Y') . '</p>';
             ?>
         </div>
     </div>

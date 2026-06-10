@@ -1,94 +1,135 @@
 :root{
     --background: #FFF;
-    --section-bg: #D4D4D4;
-    --button-bg: #C1C1C1;
+    --section-bg: #02d7e6;
+    --button-bg: #03cad8;
     --button-hover-bg: #bdbdbd;
     --search-color: #8b8ba7;
     --border: #000;
     --text: #000;
+    --text-2: rgba(0, 0, 0, 0.5);
+    --white: #fff;
 }
 
-body{
-    background: var(--background);
+* {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-header{
+body {
     background: var(--background);
+    color: var(--text);
+}
+
+header {
+    background: var(--background);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.logo {
+    color: var(--text);
+}
+
+.form {
+    background: var(--section-bg);
 }
 
 .form button {
     color: var(--search-color);
 }
 
-.form {
-    --input-bg: var(--section-bg);
-    background: var(--input-bg,#fff);
+.form svg {
+    stroke: var(--search-color);
 }
 
-.language{
+.input {
+    color: var(--text);
+}
+
+.input::placeholder {
+    color: var(--search-color);
+    opacity: 0.8;
+}
+
+.reset svg {
+    stroke: var(--search-color);
+}
+
+.language {
     border: 1px solid var(--border);
 }
 
-.language select{
-    background: var(--background);
-}
-
-.categoriesButton{
-    background: var(--button-bg);
-}
-
-.categories select{
-    background: var(--button-bg);
-}
-
-.showcase{
-    background: var(--section-bg);
-}
-
-.event{
-    background: var(--section-bg);
-}
-
-.price{
-    background: var(--section-bg);
-}
-
-.access-form{
-    background: var(--section-bg);
-}
-
-.Form-input-section button{
-    background: var(--button-bg);
-}
-
-.Form-input-section button:hover{
-    background-color: var(--button-hover-bg);
-}
-
-.profile{
+.language:hover{
     background-color: var(--section-bg);
 }
 
-.Logout button{
-    background: var(--background);
+.categoriesButton {
+    background: var(--button-bg);
 }
 
-.Logout button:hover{
-    background: var(--button-hover-bg);
+.categories select {
+    background: var(--button-bg);
 }
 
-.myEvents{
+.showcase {
     background: var(--section-bg);
 }
 
-.myLikedEvents{
-    background: var(--section-bg);
+.event {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--section-bg)), var(--event-img);
+    border: 3px solid var(--section-bg);
 }
 
-footer{
-    background: var(--background);
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-footer a{
+.access-form {
+    background-color: var(--section-bg);
+}
+
+.Form-input-section input {
+    background-color: var(--white);
+    border: 1px solid var(--border);
     color: var(--text);
+}
+
+.Form-input-section input::placeholder {
+    color: var(--search-color);
+}
+
+.Form-input-section button {
+    background: var(--white);
+    color: var(--text);
+}
+
+.Form-input-section button:hover {
+    background-color: var(--button-hover-bg);
+    color: #090e1a;
+}
+
+.Logout button {
+    background: var(--section-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.Logout button:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
+}
+
+.cta-banner{
+    background-image: linear-gradient(to right, var(--button-bg), rgba(255, 255, 255, 0.1)), url(../image/event.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+footer {
+    background: var(--background);
+    box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.7);
+}
+
+.footer-title {
+    color: var(--text);
+    border-bottom: 3px solid var(--button-bg);
 }
