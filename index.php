@@ -32,11 +32,11 @@
 
     <section class="cta-banner">
         <div class="cta-content">
-            <h2>Fă-ți evenimentul cunoscut!</h2>
-            <p>Adaugă evenimentul tău pe platformă și ajungi la mii de oameni interesați.</p>
+            <h2 data-key="cta_title">Fă-ți evenimentul cunoscut!</h2>
+            <p data-key="cta_subtitle">Adaugă evenimentul tău pe platformă și ajungi la mii de oameni interesați.</p>
         </div>
         <form method="POST">
-            <button href="createEvent.php" class="cta-btn" name="cta-btn">+ Începe acum</button>
+            <button href="createEvent.php" class="cta-btn" name="cta-btn" data-key="cta_btn">+ Începe acum</button>
         </form>
     </section>
 

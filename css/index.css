@@ -21,7 +21,7 @@ header{
     z-index: 10;
 
     background: var(--background);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 15px var(--shadow-overlay);
 }
 
 .logo{
@@ -105,11 +105,11 @@ input:focus {
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--background, #ffffff);
-    border: 1px solid var(--border, rgba(0,0,0,0.1));
+    background: var(--background);
+    border: 1px solid var(--border);
     border-top: none;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 24px var(--shadow-sm);
     max-height: 320px;
     overflow-y: auto;
     z-index: 9999;
@@ -129,13 +129,13 @@ input:focus {
     gap: 12px;
     padding: 10px 16px;
     text-decoration: none;
-    color: var(--text, #000000);
+    color: var(--text);
     transition: background 0.2s ease;
     cursor: pointer;
 }
 
 .suggestion-item-link:hover {
-    background: var(--section-bg, #f3f4f6);
+    background: var(--section-bg);
 }
 
 .suggestion-thumbnail {
@@ -163,7 +163,7 @@ input:focus {
 
 .suggestion-location {
     font-size: 11px;
-    color: var(--text-2, #6b7280);
+    color: var(--text-2);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -173,7 +173,7 @@ input:focus {
     padding: 15px;
     text-align: center;
     font-size: 13px;
-    color: var(--text-2, #6b7280);
+    color: var(--text-2);
     font-style: italic;
     margin: 0;
 }
@@ -201,7 +201,7 @@ input:not(:placeholder-shown) ~ .reset {
 }
 
 .form-error {
-    color: #ff3333;
+    color: var(--error);
     font-size: 14px;
     text-align: center;
     margin: 0;
@@ -211,8 +211,8 @@ input:not(:placeholder-shown) ~ .reset {
 
 .errors-box-container {
     width: 100%;
-    background-color: #fff5f5;
-    border: 2px solid #ff3333;
+    background-color: var(--error-bg);
+    border: 2px solid var(--error);
     border-radius: 6px;
     padding: 12px 15px;
     margin-bottom: 20px;
@@ -220,7 +220,7 @@ input:not(:placeholder-shown) ~ .reset {
 }
 
 .errors-box-container .form-error {
-    color: #cc0000;
+    color: var(--error-dark);
     font-size: 14px;
     font-weight: 600;
     text-align: center;
@@ -314,7 +314,7 @@ input:not(:placeholder-shown) ~ .reset {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: var(--shadow-overlay); 
     backdrop-filter: blur(6px);
     z-index: 999; 
     transition: all 0.2s ease-in-out;
@@ -335,7 +335,7 @@ input:not(:placeholder-shown) ~ .reset {
     align-items: center;
     border-radius: 15px;
     padding: 15px;
-    box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 24px var(--shadow-md);
     background-color: var(--section-bg);
 }
 
@@ -403,7 +403,7 @@ input:not(:placeholder-shown) ~ .reset {
 
 .Form-input-section button:hover {
     background-color: var(--button-hover-bg);
-    color: #090e1a;
+    color: var(--text-dark);
 }
 
 .themeButton{
@@ -449,10 +449,12 @@ input:not(:placeholder-shown) ~ .reset {
     font-size: 18px;
     padding: 5px;
     background: var(--button-bg);
+    color: var(--text-select);
 }
 
 .categoriesButton:hover{
     font-size: 24px;
+    color: var(--text);
 }
 
 .categories select{
@@ -552,7 +554,7 @@ input:not(:placeholder-shown) ~ .reset {
     justify-content: center;
     cursor: pointer;
     z-index: 5;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px var(--shadow-lg);
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
@@ -589,8 +591,14 @@ input:not(:placeholder-shown) ~ .reset {
 }
 
 .category-scroll-container::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
+    background: var(--border-faint);
     border-radius: 10px;
+}
+
+.event-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .event {
@@ -608,7 +616,7 @@ input:not(:placeholder-shown) ~ .reset {
     display: flex;
     flex-direction: column;
     justify-content: end; 
-    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--section-bg)), var(--event-img);
+    background-image: linear-gradient(transparent, var(--section-bg)), var(--event-img);
     border: 3px solid var(--section-bg);
 }
 
@@ -618,6 +626,9 @@ input:not(:placeholder-shown) ~ .reset {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    text-decoration: 0;
+    color: var(--text);
+    text-decoration: none;
 }
 
 .event-details-row {
@@ -633,6 +644,7 @@ input:not(:placeholder-shown) ~ .reset {
     white-space: nowrap; 
     overflow: hidden;   
     text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 .eventHeart {
@@ -654,7 +666,8 @@ input:not(:placeholder-shown) ~ .reset {
     line-height: 1.1;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
+    text-decoration: none;
 }
 
 .price {
@@ -662,7 +675,9 @@ input:not(:placeholder-shown) ~ .reset {
     font-size: 18px;
     font-weight: 600;
     white-space: nowrap;
-    flex-shrink: 0;     
+    flex-shrink: 0;
+    text-decoration: none;
+    color: var(--text);
 }
 
 .eventHeart{
@@ -685,7 +700,7 @@ input:not(:placeholder-shown) ~ .reset {
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px 10px var(--shadow-md);
     box-sizing: border-box;
     background-image: linear-gradient(to right, var(--button-bg), rgba(255, 255, 255, 0.1)), url(../image/event.jpg);
     background-position: center;

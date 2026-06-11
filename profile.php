@@ -26,11 +26,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - EventPlanned</title>
     <link id="theme" rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
-<body>
-    
+<body class="page-profile">
+
+<?php include('header.php'); ?>
+
 <main>
 <div class="profile">
     <?php
@@ -50,16 +53,16 @@
 
     <div class="profile-actions-sidebar">
         <form method="POST" name="return" class="return">
-            <button name="return">Return to home page</button>
+            <button name="return" data-key="profile_return">Return to home page</button>
         </form>
         <form action="include/logout.inc.php" method="POST" class="Logout">
-            <button>Logout</button>
+            <button data-key="profile_logout">Logout</button>
         </form>
     </div>
 </div>
 
 <div class="myEvents">
-    <p class="myEventsText">My Events:</p>
+    <p class="myEventsText" data-key="profile_my_events">My Events:</p>
     <button class="myEventsAdd" onclick="window.location.href='createEvent.php'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -69,7 +72,7 @@
     <div class="profile-cards-container">
         <?php if (!empty($myEventsList)): ?>
             <?php foreach ($myEventsList as $event): ?>
-                <div class="event-mini-card">
+                <div class="event-mini-card" onclick="window.location.href='event.php?id=<?php echo $event['id']; ?>&from=profile'" style="cursor:pointer;">
                     <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="Poster" class="mini-card-img">
                     <div class="mini-card-details">
                         <h4><?php echo htmlspecialchars($event['event_name']); ?></h4>
@@ -78,12 +81,12 @@
                     </div>
                     
                     <div class="profile-card-actions">
-                        <button class="action-btn edit-btn" onclick="window.location.href='editEvent.php?id=<?php echo $event['id']; ?>'" title="Edit Event">
+                        <button class="action-btn edit-btn" onclick="event.stopPropagation(); window.location.href='editEvent.php?id=<?php echo $event['id']; ?>'" title="Edit Event">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                             </svg>
                         </button>
-                        <button class="action-btn delete-btn" onclick="deleteProfileEvent(<?php echo $event['id']; ?>, this)" title="Delete Event">
+                        <button class="action-btn delete-btn" onclick="event.stopPropagation(); deleteProfileEvent(<?php echo $event['id']; ?>, this)" title="Delete Event">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="3 6 5 6 21 6"></polyline>
                                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
@@ -93,7 +96,7 @@
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p class="empty-section-text">Nu ai creat niciun eveniment încă.</p>
+            <p class="empty-section-text" data-key="profile_empty_events">Nu ai creat niciun eveniment încă.</p>
         <?php endif; ?>
     </div>
 </div>
@@ -134,12 +137,12 @@ function deleteProfileEvent(eventId, buttonElement) {
 </script>
 
 <div class="myLikedEvents">
-    <p class="myLikedEventsText">My Liked Events:</p>
+    <p class="myLikedEventsText" data-key="profile_my_liked">My Liked Events:</p>
     
     <div class="profile-cards-container">
         <?php if (!empty($myLikedList)): ?>
             <?php foreach ($myLikedList as $event): ?>
-                <div class="event-mini-card">
+                <div class="event-mini-card" onclick="window.location.href='event.php?id=<?php echo $event['id']; ?>&from=profile'" style="cursor:pointer;">
                     <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="Poster" class="mini-card-img">
                     <div class="mini-card-details">
                         <h4><?php echo htmlspecialchars($event['event_name']); ?></h4>
@@ -147,7 +150,7 @@ function deleteProfileEvent(eventId, buttonElement) {
                         <span><?php echo htmlspecialchars((string)$event['price']); ?> MDL</span>
                     </div>
                     
-                    <div class="eventHeart profileHeart" onclick="toggleLikeProfile(<?php echo $event['id']; ?>, this)">
+                    <div class="eventHeart profileHeart" onclick="vent.stopPropagation(); toggleLikeProfile(<?php echo $event['id']; ?>, this)">
                         <svg class="heart-icon active" width="22" height="22" viewBox="0 0 24 24" fill="#ef4444" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                         </svg>
@@ -155,7 +158,7 @@ function deleteProfileEvent(eventId, buttonElement) {
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p class="empty-section-text">Nu ai apreciat niciun eveniment încă.</p>
+            <p class="empty-section-text" data-key="profile_empty_liked">Nu ai apreciat niciun eveniment încă.</p>
         <?php endif; ?>
     </div>
 </div>
@@ -197,5 +200,6 @@ function toggleLikeProfile(eventId, heartElement) {
 <?php include('footer.php'); ?>
 
 <script src="js/theme.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

@@ -37,8 +37,8 @@
 
     <main class="create-event-wrapper">
         <form action="include/edit_event.inc.php" method="POST" enctype="multipart/form-data" class="create-event-form">
-            <h2>Modify Event Details</h2>
-            <p class="form-subtitle">Update fields below to edit your existing publication rules.</p>
+            <h2 data-key="edit_title">Modify Event Details</h2>
+            <p class="form-subtitle" data-key="edit_subtitle">Update fields below to edit your existing publication rules.</p>
 
             <?php
                 if (isset($_SESSION['edit_event_success'])) {
@@ -58,11 +58,11 @@
 
             <div class="form-row">
                 <div class="form-group flex-2">
-                    <label for="eventName">Event Name</label>
+                    <label for="eventName" data-key="create_label_name">Event Name</label>
                     <input type="text" id="eventName" name="eventName" value="<?php echo htmlspecialchars($event['event_name']); ?>" required>
                 </div>
                 <div class="form-group flex-1">
-                    <label for="eventCategory">Category</label>
+                    <label for="eventCategory" data-key="create_label_category">Category</label>
                     <select id="eventCategory" name="eventCategory" required>
                         <?php $cat = $event['label']; ?>
                         <option value="Concert" <?php echo $cat === 'Concert' ? 'selected' : ''; ?>>Concert</option>
@@ -76,35 +76,35 @@
 
             <div class="form-row">
                 <div class="form-group flex-1">
-                    <label for="eventTime">Date & Time</label>
+                    <label for="eventTime" data-key="create_label_datetime">Date & Time</label>
                     <?php $formattedTime = date('Y-m-d\TH:i', strtotime($event['event_time'])); ?>
                     <input type="datetime-local" id="eventDate" name="eventTime" value="<?php echo $formattedTime; ?>" required>
                 </div>
                 <div class="form-group flex-1">
-                    <label for="eventPrice">Price (MDL)</label>
+                    <label for="eventPrice" data-key="create_label_price">Price (MDL)</label>
                     <input type="number" id="eventPrice" name="eventPrice" value="<?php echo htmlspecialchars((string)$event['price']); ?>" min="0" step="0.01" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="eventLocation">Location</label>
+                <label for="eventLocation" data-key="create_label_location">Location</label>
                 <input type="text" id="eventLocation" name="eventLocation" value="<?php echo htmlspecialchars($event['event_location']); ?>" required>
             </div>
 
             <div class="form-group">
-                <label for="eventImage">Change Event Poster (Leave blank to keep existing)</label>
+                <label for="eventImage" data-key="edit_label_image">Change Event Poster (Leave blank to keep existing)</label>
                 <input type="file" id="eventImage" name="eventImage" accept="image/*">
                 <p style="font-size:12px; margin:5px 0 0 5px; color:var(--text-2);">Curent: <?php echo htmlspecialchars($event['image']); ?></p>
             </div>
 
             <div class="form-group">
-                <label for="eventDescription">Description</label>
+                <label for="eventDescription" data-key="create_label_desc">Description</label>
                 <textarea id="eventDescription" name="eventDescription" rows="6" required><?php echo htmlspecialchars($event['description']); ?></textarea>
             </div>
 
             <div style="display:flex; gap:15px;">
-                <button type="submit" class="create-event-btn" style="flex:3;">Save Modifications</button>
-                <button type="button" class="create-event-btn" onclick="window.location.href='profile.php'" style="flex:1; background:#6b7280;">Back</button>
+                <button type="submit" class="create-event-btn" style="flex:3;" data-key="edit_btn_save">Save Modifications</button>
+                <button type="button" class="create-event-btn" onclick="window.location.href='profile.php'" style="flex:1; background:#6b7280;" data-key="edit_btn_back">Back</button>
             </div>
         </form>
     </main>

@@ -40,18 +40,18 @@
         ?>
 
         <form action="include/create_event.inc.php" method="POST" enctype="multipart/form-data" class="create-event-form">
-            <h2>Create a New Event</h2>
-            <p class="form-subtitle">Fill in the details below to publish your event.</p>
+            <h2 data-key="create_title">Create a New Event</h2>
+            <p class="form-subtitle" data-key="create_subtitle">Fill in the details below to publish your event.</p>
 
             <div class="form-row">
                 <div class="form-group flex-2">
-                    <label for="eventName">Event Name</label>
-                    <input type="text" id="eventName" name="eventName" placeholder="e.g., Summer Music Festival" required>
+                    <label for="eventName" data-key="create_label_name">Event Name</label>
+                    <input type="text" id="eventName" name="eventName" placeholder="e.g., Summer Music Festival" data-key="create_placeholder_name" required>
                 </div>
                 <div class="form-group flex-1">
-                    <label for="eventCategory">Category</label>
+                    <label for="eventCategory" data-key="create_label_category">Category</label>
                     <select id="eventCategory" name="eventCategory" required>
-                        <option value="" disabled selected>Select a category</option>
+                        <option value="" disabled selected data-key="create_select_category">Select a category</option>
                         <option value="Concert">Concert</option>
                         <option value="Festival">Festival</option>
                         <option value="Exposition">Exposition</option>
@@ -63,31 +63,31 @@
 
             <div class="form-row">
                 <div class="form-group flex-1">
-                    <label for="eventTime">Date & Time</label>
+                    <label for="eventTime" data-key="create_label_datetime">Date & Time</label>
                     <input type="datetime-local" id="eventDate" name="eventTime" required>
                 </div>
                 <div class="form-group flex-1">
-                    <label for="eventPrice">Price (MDL)</label>
+                    <label for="eventPrice" data-key="create_label_price">Price (MDL)</label>
                     <input type="number" id="eventPrice" name="eventPrice" placeholder="0.00" min="0" step="0.01" required>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="eventLocation">Location</label>
-                <input type="text" id="eventLocation" name="eventLocation" placeholder="e.g., Piata Marii Adunari Nationale" required>
+                <label for="eventLocation" data-key="create_label_location">Location</label>
+                <input type="text" id="eventLocation" name="eventLocation" placeholder="e.g., Piata Marii Adunari Nationale" data-key="create_placeholder_location" required>
             </div>
 
             <div class="form-group">
-                <label for="eventImage">Event Poster / Image</label>
+                <label for="eventImage" data-key="create_label_image">Event Poster / Image</label>
                 <input type="file" id="eventImage" name="eventImage" accept="image/*" required>
             </div>
 
             <div class="form-group">
-                <label for="eventDescription">Description</label>
-                <textarea id="eventDescription" name="eventDescription" rows="6" placeholder="Tell people what your event is about..." required></textarea>
+                <label for="eventDescription" data-key="create_label_desc">Description</label>
+                <textarea id="eventDescription" name="eventDescription" rows="6" placeholder="Tell people what your event is about..." data-key="create_placeholder_desc" required></textarea>
             </div>
 
-            <button type="submit" class="create-event-btn">Publish Event</button>
+            <button type="submit" class="create-event-btn" data-key="create_btn">Publish Event</button>
         </form>
     </main>
 
