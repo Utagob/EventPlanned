@@ -7,9 +7,9 @@ body{
     grid-template-areas: 
     "profile profile"
     "myevents mylikedevents";
-    grid-template-columns: 1fr 3fr;
-    gap: 10px;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
     background: var(--section-bg);
 }
 
@@ -24,10 +24,11 @@ body{
     border-radius: 18px;
     background: var(--background);
 
-    width: 100% - 40px;
+    width: 100%;
     height: 200px;
 
     padding: 5px;
+    box-sizing: border-box;
 }
 
 .avatar{
@@ -87,7 +88,7 @@ body{
 .myEvents{
     grid-area: myevents;
 
-    width: 95%;
+    width: 100%;
     height: auto;
 
     border-radius: 18px;
@@ -98,7 +99,8 @@ body{
     "name plus"
     "event event";
     grid-template-columns: 6fr 1fr;
-    padding: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .myEventsText{
@@ -117,19 +119,19 @@ body{
     height: 20px;
 
     align-self: center;
-    justify-content: center;
+    justify-self: end;
 }
 
 .myLikedEvents{
     grid-area: mylikedevents;
-    justify-self: end;
     background: var(--background);
 
-    width: 95%;
+    width: 100%;
     height: auto;
 
     border-radius: 18px;
-    padding: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
@@ -138,4 +140,90 @@ body{
 .myLikedEventsText{
     margin: 0;
     font-size: 32px;
+}
+
+.profile-cards-container {
+    grid-area: event;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+.event-mini-card {
+    position: relative;
+    display: flex;
+    background: var(--white, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.mini-card-img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover; 
+    flex-shrink: 0;   
+}
+
+.mini-card-details {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    max-width: calc(100% - 140px);
+}
+
+.mini-card-details h4 {
+    margin: 0 0 3px 0;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text);
+}
+
+.mini-card-details p {
+    margin: 0 0 4px 0;
+    font-size: 12px;
+    color: var(--text-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-card-details span {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--button-bg);
+}
+
+.profileHeart {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.profileHeart:hover {
+    transform: translateY(-50%) scale(1.2);
+    cursor: pointer;
+}
+
+.empty-section-text {
+    font-size: 13px;
+    color: var(--text-2);
+    font-style: italic;
+    margin-top: 10px;
 }

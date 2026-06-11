@@ -1,6 +1,35 @@
 <?php
 
-declare(strict_types= 1);
+declare(strict_types=1);
+
+function get_user_created_events(object $pdo, int $userId): array {
+    $query = "SELECT * FROM events WHERE organiser_id = :user_id ORDER BY id DESC;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function get_user_liked_events(object $pdo, int $userId): array {
+    $userQuery = "SELECT liked_events FROM users WHERE id = :user_id;";
+    $userStmt = $pdo->prepare($userQuery);
+    $userStmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    $userStmt->execute();
+    $userRow = $userStmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$userRow || empty($userRow['liked_events']) || trim($userRow['liked_events']) === "") {
+        return [];
+    }
+
+    $likedString = $userRow['liked_events'];
+
+    $query = "SELECT * FROM events WHERE FIND_IN_SET(id, :liked_string) > 0 ORDER BY id DESC;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':liked_string', $likedString, PDO::PARAM_STR);
+    $stmt->execute();
+    
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
 function all_events(object $pdo, ?int $userId = null) {
     if ($userId !== null) {
@@ -14,15 +43,6 @@ function all_events(object $pdo, ?int $userId = null) {
     
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_event(object $pdo, string $event_name) {
-    $query = 'SELECT * FROM events WHERE event_name = :event_name;';
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':event_name', $event_name);
-    $stmt->execute();
-
-    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
 function create_event(object $pdo, string $eventName, string $eventTime, string $eventLocation, string $eventImage, float $eventPrice, string $eventDescription, int $eventOrganiserId, string $eventCategory) {
