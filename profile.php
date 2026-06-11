@@ -78,7 +78,7 @@
     <div class="profile-cards-container">
         <?php if (!empty($myLikedList)): ?>
             <?php foreach ($myLikedList as $event): ?>
-                <div class="event-mini-card dynamic-liked-card" data-event-id="<?php echo $event['id']; ?>">
+                <div class="event-mini-card">
                     <img src="<?php echo htmlspecialchars($event['image']); ?>" alt="Poster" class="mini-card-img">
                     <div class="mini-card-details">
                         <h4><?php echo htmlspecialchars($event['event_name']); ?></h4>
@@ -101,7 +101,7 @@
 
 <script>
 function toggleLikeProfile(eventId, heartElement) {
-    // Perform fetch call to your like handling route (e.g., include/like_event.inc.php)
+    // Send a secure POST request to the backend script
     fetch('include/like_toggle.inc.php', {
         method: 'POST',
         headers: {
@@ -111,23 +111,29 @@ function toggleLikeProfile(eventId, heartElement) {
     })
     .then(response => response.json())
     .then(data => {
-        // Smoothly remove the event element block from the DOM when unliked
-        const card = heartElement.closest('.event-mini-card');
-        if (card) {
-            card.style.transition = 'all 0.3s ease';
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                card.remove();
-                // Check if section is completely empty now
-                const container = document.querySelector('.myLikedEvents .profile-cards-container');
-                if (container && container.children.length === 0) {
-                    container.innerHTML = '<p class="empty-section-text">Nu ai apreciat niciun eveniment încă.</p>';
-                }
-            }, 300);
+        if (data.status === 'success' && data.action === 'unliked') {
+            // Find the closest mini card container parent element
+            const card = heartElement.closest('.event-mini-card');
+            if (card) {
+                // Add smooth visual transition
+                card.style.transition = 'all 0.3s ease';
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                
+                // Remove from the page completely once the transition finishes
+                setTimeout(() => {
+                    card.remove();
+                    
+                    // Fallback message check if all items are unliked
+                    const container = document.querySelector('.myLikedEvents .profile-cards-container');
+                    if (container && container.querySelectorAll('.event-mini-card').length === 0) {
+                        container.innerHTML = '<p class="empty-section-text">Nu ai apreciat niciun eveniment încă.</p>';
+                    }
+                }, 300);
+            }
         }
     })
-    .catch(error => console.error('Error handling like event request:', error));
+    .catch(error => console.error('Error matching heart toggle action:', error));
 }
 </script>
 
