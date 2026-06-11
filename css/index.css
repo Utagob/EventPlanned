@@ -275,6 +275,11 @@ input:not(:placeholder-shown) ~ .reset {
     gap: 0; 
 }
 
+.lang{
+    width: 20px;
+    height: 20px;
+}
+
 .account{
     grid-area: account;
     width: 50px;
@@ -288,13 +293,13 @@ input:not(:placeholder-shown) ~ .reset {
 }
 
 .loggedOutAvatar{
-    width: 35px; 
-    height: 35px;
+    width: 30px; 
+    height: 30px;
 }
 
 .account:hover .loggedOutAvatar{
-    width: 40px; 
-    height: 40px;
+    width: 35px; 
+    height: 35px;
 }
 
 .loggedInAvatar{

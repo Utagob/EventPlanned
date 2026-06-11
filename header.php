@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="right">
         <div class="language">
             <button type="button" id="langToggleBtn" data-current-lang="RO">
-                <svg class="lang" width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+                <img class="lang" src="image/globe.svg">
                 <span id="langLabel">RO</span>
             </button>
         </div>
@@ -52,7 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
         <div class="themeButton">
             <button type="submit" name="theme" style="padding: 0; border: none; background: transparent">
-                <img src="image/moon.svg" class="themeButtonImg">
             </button>
         </div>
     </div>
