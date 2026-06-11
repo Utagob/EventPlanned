@@ -107,3 +107,37 @@ function toggle_event_like(object $pdo, int $userId, int $eventId): string {
 
     return $status;
 }
+
+function get_single_event(object $pdo, int $eventId): array|bool {
+    $query = "SELECT * FROM events WHERE id = :event_id;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':event_id', $eventId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+function update_event(object $pdo, int $eventId, string $eventName, string $eventTime, string $eventLocation, string $eventImage, float $eventPrice, string $eventDescription, string $eventCategory) {
+    $query = "UPDATE events 
+              SET event_name = :event_name, event_time = :event_time, event_location = :event_location, 
+                  image = :image, price = :price, description = :description, label = :eventCategory
+              WHERE id = :event_id;";
+    
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":event_name", $eventName);
+    $stmt->bindParam(":event_time", $eventTime);
+    $stmt->bindParam(":event_location", $eventLocation);
+    $stmt->bindParam(":image", $eventImage);
+    $stmt->bindParam(":price", $eventPrice);
+    $stmt->bindParam(":description", $eventDescription);
+    $stmt->bindParam(":eventCategory", $eventCategory);
+    $stmt->bindParam(":event_id", $eventId, PDO::PARAM_INT);
+    $stmt->execute();
+}
+
+function delete_event(object $pdo, int $eventId, int $userId): bool {
+    $query = "DELETE FROM events WHERE id = :event_id AND organiser_id = :user_id;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':event_id', $eventId, PDO::PARAM_INT);
+    $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+    return $stmt->execute();
+}

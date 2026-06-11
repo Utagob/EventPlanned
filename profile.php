@@ -2,9 +2,10 @@
     require_once("include/config_session.inc.php");
     require_once("include/login_view.inc.php");
     
-    if (!isset($_SESSION['user_id'])) {
-        header("Location: index.php");
-        die();
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        if (isset($_POST['submit'])) {
+            header("Location: index.php");
+        }
     }
 
     require_once("include/dbh.inc.php");
@@ -12,6 +13,10 @@
 
     $myEventsList = get_user_created_events($pdo, $_SESSION['user_id']);
     $myLikedList = get_user_liked_events($pdo, $_SESSION['user_id']);
+
+    if(isset($_POST['return'])){
+        header('Location: index.php');
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +27,11 @@
     <title>Profile - EventPlanned</title>
     <link id="theme" rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
     
+<main>
 <div class="profile">
     <?php
         echo '<img class="avatar" src ="' . make_avatar($_SESSION['user_username'][0]) . '">';
@@ -41,9 +48,14 @@
         </div>
     </div>
 
-    <form action="include/logout.inc.php" method="POST" class="Logout">
-        <button>Logout</button>
-    </form>
+    <div class="profile-actions-sidebar">
+        <form method="POST" name="return" class="return">
+            <button name="return">Return to home page</button>
+        </form>
+        <form action="include/logout.inc.php" method="POST" class="Logout">
+            <button>Logout</button>
+        </form>
+    </div>
 </div>
 
 <div class="myEvents">
@@ -64,6 +76,20 @@
                         <p><?php echo htmlspecialchars($event['event_location']); ?></p>
                         <span><?php echo htmlspecialchars((string)$event['price']); ?> MDL</span>
                     </div>
+                    
+                    <div class="profile-card-actions">
+                        <button class="action-btn edit-btn" onclick="window.location.href='editEvent.php?id=<?php echo $event['id']; ?>'" title="Edit Event">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                            </svg>
+                        </button>
+                        <button class="action-btn delete-btn" onclick="deleteProfileEvent(<?php echo $event['id']; ?>, this)" title="Delete Event">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
@@ -71,6 +97,41 @@
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+function deleteProfileEvent(eventId, buttonElement) {
+    if (confirm("Sigur dorești să ștergi definitiv acest eveniment?")) {
+        fetch('include/delete_event.inc.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'event_id=' + eventId
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                const card = buttonElement.closest('.event-mini-card');
+                if (card) {
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    setTimeout(() => {
+                        card.remove();
+                        const container = document.querySelector('.myEvents .profile-cards-container');
+                        if (container && container.querySelectorAll('.event-mini-card').length === 0) {
+                            container.innerHTML = '<p class="empty-section-text">Nu ai creat niciun eveniment încă.</p>';
+                        }
+                    }, 300);
+                }
+            } else {
+                alert(data.message || "A apărut o eroare.");
+            }
+        })
+        .catch(error => console.error('Error executing event drop sequence:', error));
+    }
+}
+</script>
 
 <div class="myLikedEvents">
     <p class="myLikedEventsText">My Liked Events:</p>
@@ -101,7 +162,6 @@
 
 <script>
 function toggleLikeProfile(eventId, heartElement) {
-    // Send a secure POST request to the backend script
     fetch('include/like_toggle.inc.php', {
         method: 'POST',
         headers: {
@@ -112,19 +172,15 @@ function toggleLikeProfile(eventId, heartElement) {
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success' && data.action === 'unliked') {
-            // Find the closest mini card container parent element
             const card = heartElement.closest('.event-mini-card');
             if (card) {
-                // Add smooth visual transition
                 card.style.transition = 'all 0.3s ease';
                 card.style.opacity = '0';
                 card.style.transform = 'scale(0.9)';
                 
-                // Remove from the page completely once the transition finishes
                 setTimeout(() => {
                     card.remove();
                     
-                    // Fallback message check if all items are unliked
                     const container = document.querySelector('.myLikedEvents .profile-cards-container');
                     if (container && container.querySelectorAll('.event-mini-card').length === 0) {
                         container.innerHTML = '<p class="empty-section-text">Nu ai apreciat niciun eveniment încă.</p>';
@@ -136,6 +192,9 @@ function toggleLikeProfile(eventId, heartElement) {
     .catch(error => console.error('Error matching heart toggle action:', error));
 }
 </script>
+</main>
+
+<?php include('footer.php'); ?>
 
 <script src="js/theme.js"></script>
 </body>
