@@ -101,9 +101,3 @@
     <script src="js/register.js"></script>
 </body>
 </html>
-
-    <script src="js/theme.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/register.js"></script>
-</body>
-</html>

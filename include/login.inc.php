@@ -42,7 +42,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $_SESSION['user_email'] = $result['email'];
         $_SESSION['user_date'] = $result['created_at'];
 
-
         $_SESSION["last_regeneration"] = time();
 
         header('Location: ../index.php?login=success');

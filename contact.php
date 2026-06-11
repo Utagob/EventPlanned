@@ -22,24 +22,19 @@ require_once "include/config_session.inc.php";
             <p data-key="contact_desc" style="text-align: center; color: var(--text-2); margin-bottom: 30px;">
                 Have a question or found a bug? Send us a message!
             </p>
-            
             <form action="include/contact.inc.php" method="POST" class="contact-form">
                 <div class="contact-input-section">
                     <input type="text" name="name" placeholder="Your Name" data-key="contact_name_ph" required autocomplete="off">
                 </div>
-                
                 <div class="contact-input-section">
                     <input type="email" name="email" placeholder="Your Email" data-key="contact_email_ph" required autocomplete="off">
                 </div>
-
                 <div class="contact-input-section">
                     <input type="text" name="subject" placeholder="Subject" data-key="contact_subject_ph" required autocomplete="off">
                 </div>
-                
                 <div class="contact-input-section">
                     <textarea name="message" rows="6" placeholder="Your Message..." data-key="contact_msg_ph" required></textarea>
                 </div>
-                
                 <button type="submit" name="submit-contact" class="cta-btn contact-btn" data-key="contact_btn_send">Send Message</button>
             </form>
         </div>
@@ -49,5 +44,6 @@ require_once "include/config_session.inc.php";
 
 <script src="js/theme.js"></script>
 <script src="js/script.js"></script>
+<script src="js/register.js"></script>
 </body>
 </html>
