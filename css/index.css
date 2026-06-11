@@ -18,7 +18,7 @@ header{
 
     position: sticky;
     top: 0;
-    z-index: 5;
+    z-index: 10;
 
     background: var(--background);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
@@ -97,6 +97,85 @@ header{
 
 input:focus {
     outline: none;
+}
+
+/* Autocomplete Dropdown overlay panel styling alignment rules */
+.search-autocomplete-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--background, #ffffff);
+    border: 1px solid var(--border, rgba(0,0,0,0.1));
+    border-top: none;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-height: 320px;
+    overflow-y: auto;
+    z-index: 9999;
+    margin-top: 4px;
+    box-sizing: border-box;
+    padding: 6px 0;
+}
+
+.search-autocomplete-dropdown::-webkit-scrollbar{
+    height: 90%;
+}
+
+/* Individual dropdown element configuration settings */
+.suggestion-item-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: var(--text, #000000);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.suggestion-item-link:hover {
+    background: var(--section-bg, #f3f4f6);
+}
+
+.suggestion-thumbnail {
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.suggestion-metadata {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.suggestion-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 2px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.suggestion-location {
+    font-size: 11px;
+    color: var(--text-2, #6b7280);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.no-suggestions-alert {
+    padding: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-2, #6b7280);
+    font-style: italic;
+    margin: 0;
 }
 
 .reset {
