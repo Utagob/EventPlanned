@@ -2,42 +2,87 @@
     cursor: pointer;
 }
 
-body{
+main{
     display: grid;
     grid-template-areas: 
     "profile profile"
     "myevents mylikedevents";
-    grid-template-columns: 1fr 3fr;
-    gap: 10px;
-
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
     background: var(--section-bg);
 }
 
-.profile{
+.profile {
     grid-area: profile;
 
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-columns: 1.5fr 4fr 2.5fr; /* Allocated extra column space for text adjustments */
     grid-template-areas: 
-    "avatar text logout";
+    "avatar text sidebar";
 
     border-radius: 18px;
     background: var(--background);
 
-    width: 100% - 40px;
+    width: 100%;
     height: 200px;
 
-    padding: 5px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.profile-actions-sidebar {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-end;
+    gap: 12px;
+    height: 100%;
+}
+
+.return, .Logout {
+    width: auto;
+    margin: 0;
+}
+
+.return button, .Logout button {
+    width: auto;
+    height: 45px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    background: var(--section-bg);
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    padding: 0 20px;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.return button{
+    background: var(--background);
+}
+
+.return button:hover {
+    background: var(--button-bg);
+    opacity: 0.9;
+}
+
+.Logout button:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
 }
 
 .avatar{
     grid-area: avatar;
-
     align-self: center;
     justify-self: center;
-
     border-radius: 50%;
-
     width: 150px;
     height: 150px;
 }
@@ -57,37 +102,10 @@ body{
     margin-top: 40px;
 }
 
-.Logout{
-    grid-area: logout;
-
-    align-self: flex-start;
-    justify-self: flex-end;
-}
-
-.Logout button{
-    width: 100px;
-    height: 50px;
-
-    border: none;
-    border-radius: 40px;
-
-    background: var(--section-bg);
-    color: var(--text);
-    border: 1px solid var(--border);
-
-    font-size: 24px;
-}
-
-.Logout button:hover {
-    background: #ef4444;
-    color: #ffffff;
-    border-color: #ef4444;
-}
-
 .myEvents{
     grid-area: myevents;
 
-    width: 95%;
+    width: 100%;
     height: auto;
 
     border-radius: 18px;
@@ -98,12 +116,12 @@ body{
     "name plus"
     "event event";
     grid-template-columns: 6fr 1fr;
-    padding: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .myEventsText{
     grid-area: name;
-
     margin: 0;
     font-size: 32px;
 }
@@ -112,24 +130,22 @@ body{
     grid-area: plus;
     background: transparent;
     border: none;
-
     width: 20px; 
     height: 20px;
-
     align-self: center;
-    justify-content: center;
+    justify-self: end;
 }
 
 .myLikedEvents{
     grid-area: mylikedevents;
-    justify-self: end;
     background: var(--background);
 
-    width: 95%;
+    width: 100%;
     height: auto;
 
     border-radius: 18px;
-    padding: 10px;
+    padding: 20px;
+    box-sizing: border-box;
 
     display: flex;
     flex-direction: column;
@@ -138,4 +154,126 @@ body{
 .myLikedEventsText{
     margin: 0;
     font-size: 32px;
+}
+
+.profile-cards-container {
+    grid-area: event;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+    box-sizing: border-box;
+}
+
+.event-mini-card {
+    position: relative;
+    display: flex;
+    background: var(--white, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    height: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+.mini-card-img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover; 
+    flex-shrink: 0;   
+}
+
+.mini-card-details {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    max-width: calc(100% - 140px);
+}
+
+.profile-card-actions {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+}
+
+.action-btn {
+    background: var(--background);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.edit-btn:hover {
+    background: #03cad8;
+    color: white;
+    border-color: #03cad8;
+}
+
+.delete-btn:hover {
+    background: #ef4444;
+    color: white;
+    border-color: #ef4444;
+}
+
+.mini-card-details h4 {
+    margin: 0 0 3px 0;
+    font-size: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text);
+}
+
+.mini-card-details p {
+    margin: 0 0 4px 0;
+    font-size: 12px;
+    color: var(--text-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-card-details span {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--button-bg);
+}
+
+.profileHeart {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.profileHeart:hover {
+    transform: translateY(-50%) scale(1.2);
+    cursor: pointer;
+}
+
+.empty-section-text {
+    font-size: 13px;
+    color: var(--text-2);
+    font-style: italic;
+    margin-top: 10px;
 }
