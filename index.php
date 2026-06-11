@@ -45,28 +45,62 @@
     ?>
 
     <?php if (!isset($_SESSION['user_id'])): ?>
-        <div id="accountModal" class="modal-overlay" style="display: none;">
+        <?php 
+            $showModal = false;
+            $initialView = ''; 
+
+            if (isset($_SESSION['errors_signup'])) {
+                $showModal = true;
+                $initialView = 'signup';
+            } elseif (isset($_SESSION['errors_login'])) {
+                $showModal = true;
+                $initialView = 'login';
+            } elseif (isset($_GET['signup']) && $_GET['signup'] === 'success') {
+                $showModal = true;
+                $initialView = 'signup';
+            }
+        ?>
+        <div id="accountModal" class="modal-overlay" 
+             style="display: <?php echo $showModal ? 'block' : 'none'; ?>;"
+             data-auto-open="<?php echo $showModal ? 'true' : 'false'; ?>"
+             data-initial-view="<?php echo $initialView; ?>">
             <div class="access-form">
                 <div class="signup">
                     <form action="include/signup.inc.php" method="POST" class="Form-input-section">
+                        <?php if (isset($_SESSION['errors_signup'])): ?>
+                            <div class="errors-box-container">
+                                <?php check_signup_errors(); ?>
+                            </div>
+                        <?php endif; ?>
+                        
                         <?php signup_inputs(); ?>
                         <button>Sign Up</button>
                     </form>
-                    <?php check_signup_errors(); ?>
                 </div>
                 <div class="login">
                     <form action="include/login.inc.php" method="POST" class="Form-input-section">
+                        <?php if (isset($_SESSION['errors_login'])): ?>
+                            <div class="errors-box-container">
+                                <?php check_login_errors(); ?>
+                            </div>
+                        <?php endif; ?>
+                        
                         <input type="text" name="username" placeholder="Username">
                         <input type="password" name="pwd" placeholder="Password">
                         <button>Log In</button>
                     </form>
-                    <?php check_login_errors(); ?>
                 </div>
                 <button class="open-form" name="signup">Sign Up</button>
                 <button class="open-form" name="login">Log In</button>
             </div>
         </div>
     <?php endif; ?>
+
+    <script src="js/theme.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
 
     <script src="js/theme.js"></script>
     <script src="js/script.js"></script>

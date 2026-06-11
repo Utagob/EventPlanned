@@ -20,7 +20,8 @@ header{
     top: 0;
     z-index: 5;
 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background: var(--background);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .logo{
@@ -32,6 +33,7 @@ header{
     width: 180px;
 
     font-size: 40px;
+    color: var(--text);
 }
 
 .center{
@@ -61,6 +63,7 @@ header{
     align-items: center;
     padding-inline: 0.8em;
     border-radius: var(--border-radius);
+    background: var(--section-bg);
 }
 
 .input {
@@ -71,6 +74,12 @@ header{
     padding-inline: 0.5em;
     padding-block: 0.7em;
     border: none;
+    color: var(--text);
+}
+
+.input::placeholder {
+    color: var(--search-color);
+    opacity: 0.8;
 }
 
 .form:before {
@@ -97,6 +106,10 @@ input:focus {
     visibility: hidden;
 }
 
+.reset svg {
+    stroke: var(--search-color);
+}
+
 input:not(:placeholder-shown) ~ .reset {
     opacity: 1;
     visibility: visible;
@@ -105,6 +118,38 @@ input:not(:placeholder-shown) ~ .reset {
 .form svg {
     width: 17px;
     margin-top: 3px;
+    stroke: var(--search-color);
+}
+
+.form-error {
+    color: #ff3333;
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.errors-box-container {
+    width: 100%;
+    background-color: #fff5f5;
+    border: 2px solid #ff3333;
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.errors-box-container .form-error {
+    color: #cc0000;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.errors-box-container br {
+    display: none;
 }
 
 .right{
@@ -128,6 +173,11 @@ input:not(:placeholder-shown) ~ .reset {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid var(--border);
+}
+
+.language:hover{
+    background-color: var(--section-bg);
 }
 
 .language button{
@@ -206,8 +256,8 @@ input:not(:placeholder-shown) ~ .reset {
     align-items: center;
     border-radius: 15px;
     padding: 15px;
-    background-color: var(--section-bg, #fff);
     box-shadow: 0px 8px 24px rgba(0,0,0,0.2);
+    background-color: var(--section-bg);
 }
 
 .open-form {
@@ -219,6 +269,7 @@ input:not(:placeholder-shown) ~ .reset {
 
 .signup, .login {
     display: none; 
+    margin: 0;
 }
 
 .open-form {
@@ -255,11 +306,25 @@ input:not(:placeholder-shown) ~ .reset {
     height: 30px;
     justify-self: center;
     align-self: center;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.Form-input-section input::placeholder {
+    color: var(--search-color);
 }
 
 .Form-input-section button {
     padding: 10px;
     border-radius: 20px;
+    background: var(--white);
+    color: var(--text);
+}
+
+.Form-input-section button:hover {
+    background-color: var(--button-hover-bg);
+    color: #090e1a;
 }
 
 .themeButton{
@@ -304,6 +369,7 @@ input:not(:placeholder-shown) ~ .reset {
     border: none;
     font-size: 18px;
     padding: 5px;
+    background: var(--button-bg);
 }
 
 .categoriesButton:hover{
@@ -315,6 +381,7 @@ input:not(:placeholder-shown) ~ .reset {
     border: none;
     font-size: 18px;
     padding: 5px;
+    background: var(--button-bg);
 }
 
 .categories select:hover{
@@ -331,6 +398,7 @@ input:not(:placeholder-shown) ~ .reset {
 
     position: relative;
     padding: 20px;
+    background: var(--section-bg);
 }
 
 .img1{
@@ -461,6 +529,8 @@ input:not(:placeholder-shown) ~ .reset {
     display: flex;
     flex-direction: column;
     justify-content: end; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--section-bg)), var(--event-img);
+    border: 3px solid var(--section-bg);
 }
 
 .event-meta-row,
@@ -538,6 +608,9 @@ input:not(:placeholder-shown) ~ .reset {
     gap: 30px;
     box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
+    background-image: linear-gradient(to right, var(--button-bg), rgba(255, 255, 255, 0.1)), url(../image/event.jpg);
+    background-position: center;
+    background-size: cover;
 }
 
 .cta-content h2 {

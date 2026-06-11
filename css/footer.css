@@ -9,12 +9,16 @@ footer{
     box-shadow: inset 0px 4px 8px rgba(0, 0, 0, 0.3);
 
     gap: 20px;
+    background: var(--background);
+    box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.7);
 }
 
 .footer-title{
     font-size: 64px;
     border-bottom: 3px solid black;
     margin: 0;
+    color: var(--text);
+    border-bottom: 3px solid var(--button-bg);
 }
 
 .media{

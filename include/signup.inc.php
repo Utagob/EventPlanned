@@ -20,7 +20,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             $errors['invalid_email'] = 'Invalid email used!';
         }
         if(is_username_taken($pdo, $username)){
-            $errors['username_used'] = 'Username alredy taken!';
+            $errors['username_used'] = 'Username already taken!';
+        }
+        if(is_password_short($pwd)) {
+            $errors['password_short'] = 'Password is too short!';
         }
         if(is_email_registered($pdo, $email)){
             $errors['empty_used'] = 'Email already registered!';
@@ -37,20 +40,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             ];
             $_SESSION['signup_data'] = $signupData;
 
-            header('Location: ../signup.php');
+            header('Location: ../index.php');
             die();
         }
         
         create_user($pdo, $username, $pwd, $email);
 
         header('Location: ../index.php?signup=success');
-
-        $pdo = null;
-        $stmt = null;
-
         die();
+
     } catch (PDOException $e) {
-        die('Query failed: ' . $e->getMessage());
+        die("Query failed: " . $e->getMessage());
     }
 } else {
     header('Location: ../index.php');

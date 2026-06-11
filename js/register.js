@@ -10,7 +10,6 @@ const loginSection = document.querySelector('.login');
 
 function resetModalToDefaultView() {
     if (signupSection && loginSection && signupBtn && loginBtn) {
-
         signupSection.style.display = "none";
         loginSection.style.display = "none";
 
@@ -22,20 +21,44 @@ function resetModalToDefaultView() {
     }
 }
 
+function showSignupView() {
+    if (signupSection && loginSection && signupBtn && loginBtn) {
+        signupSection.style.display = "block";
+        loginSection.style.display = "none";
+        
+        signupBtn.style.display = "none";
+        signupBtn.classList.remove('inactive');
+        
+        loginBtn.style.display = "block";
+        loginBtn.classList.add('inactive');
+    }
+}
+
+function showLoginView() {
+    if (signupSection && loginSection && signupBtn && loginBtn) {
+        loginSection.style.display = "block";
+        signupSection.style.display = "none";
+        
+        loginBtn.style.display = "none";
+        loginBtn.classList.remove('inactive');
+        
+        signupBtn.style.display = "block";
+        signupBtn.classList.add('inactive');
+    }
+}
+
 if (modal) {
-    if (accountIcon || ctaBtn) {
+    if (accountIcon) {
         accountIcon.addEventListener('click', (e) => {
             e.preventDefault(); 
-            
             resetModalToDefaultView();
-            
             modal.style.display = 'block';
         });
+    }
+    if (ctaBtn) {
         ctaBtn.addEventListener('click', (e) => {
             e.preventDefault(); 
-            
             resetModalToDefaultView();
-            
             modal.style.display = 'block';
         });
     }
@@ -54,43 +77,30 @@ if (modal) {
 }
 
 if (signupBtn && loginBtn) {
-    signupBtn.addEventListener("click", (e) => {
-        if (!signupBtn.classList.contains('inactive')) {
-            signupSection.style.display = "block";
-            loginSection.style.display = "none";
-            
-            loginBtn.classList.add('inactive');
-            loginBtn.style.display = "block";
-            signupBtn.style.display = "none";
-        } else {
-            signupSection.style.display = "block";
-            loginSection.style.display = "none";
-            
-            signupBtn.classList.remove('inactive');
-            signupBtn.style.display = "none";
-            
-            loginBtn.classList.add('inactive');
-            loginBtn.style.display = "block";
-        }
+    signupBtn.addEventListener("click", () => {
+        showSignupView();
     });
 
-    loginBtn.addEventListener("click", (e) => {
-        if (!loginBtn.classList.contains('inactive')) {
-            loginSection.style.display = "block";
-            signupSection.style.display = "none";
-
-            signupBtn.classList.add('inactive');
-            signupBtn.style.display = "block";
-            loginBtn.style.display = "none";
-        } else {
-            loginSection.style.display = "block";
-            signupSection.style.display = "none";
-            
-            loginBtn.classList.remove('inactive');
-            loginBtn.style.display = "none";
-            
-            signupBtn.classList.add('inactive');
-            signupBtn.style.display = "block";
-        }
+    loginBtn.addEventListener("click", () => {
+        showLoginView();
     });
 }
+
+// Open and layout configuration initialization on DOM Ready
+document.addEventListener("DOMContentLoaded", () => {
+    const modalContainer = document.getElementById('accountModal');
+    if (!modalContainer) return;
+
+    const autoOpen = modalContainer.getAttribute('data-auto-open') === 'true';
+    const initialView = modalContainer.getAttribute('data-initial-view');
+
+    if (autoOpen) {
+        modalContainer.style.display = 'block'; 
+        
+        if (initialView === 'signup') {
+            showSignupView();
+        } else if (initialView === 'login') {
+            showLoginView();
+        }
+    }
+});

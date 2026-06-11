@@ -37,9 +37,9 @@
 
 <div class="myEvents">
     <p class="myEventsText">My Events:</p>
-    <button class="myEventsAdd">
-        <svg width="20" height="20" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 17.1429H17.1429V30H12.8571V17.1429H0V12.8571H12.8571V0H17.1429V12.8571H30V17.1429Z" fill="black"/>
+    <button class="myEventsAdd" onclick="window.location.href='createEvent.php'">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
     </button>
 </div>

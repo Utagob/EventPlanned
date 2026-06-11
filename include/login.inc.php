@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         if($errors){
             $_SESSION['errors_login'] = $errors;
 
-            header('Location: ../login.php');
+            header('Location: ../index.php');
             die();
         }
 
@@ -55,6 +55,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         die('Query failed: ' . $e->getMessage());
     }
 } else {
-    header('Location: ../login.php');
+    header('Location: ../index.php');
     die();
 }

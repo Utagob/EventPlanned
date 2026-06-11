@@ -18,6 +18,14 @@ function is_email_invalid(string $email){
     }
 }
 
+function is_password_short(string $password){
+    if(strlen($password) < 8){
+        return true;
+    } else{
+        return false;
+    }
+}
+
 function is_username_taken(object $pdo, string $username){
     if(get_username($pdo, $username)){
         return true;

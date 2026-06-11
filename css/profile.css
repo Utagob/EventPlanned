@@ -71,9 +71,17 @@ body{
     border: none;
     border-radius: 40px;
 
-    color: red;
+    background: var(--section-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
 
     font-size: 24px;
+}
+
+.Logout button:hover {
+    background: #ef4444;
+    color: #ffffff;
+    border-color: #ef4444;
 }
 
 .myEvents{
