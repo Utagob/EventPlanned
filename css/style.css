@@ -1,17 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
 :root{
     --background: #FFF;
-    --section-bg: #02d7e6;
-    --button-bg: #03cad8;
+    --section-bg: #ffd470;
+    --button-bg: #ffc43a;
     --button-hover-bg: #bdbdbd;
     --search-color: #8b8ba7;
     --border: #000;
     --text: #000;
     --text-2: rgba(0, 0, 0, 0.5);
+    --text-dark: #090e1a;
+    --text-select: #00000085;
     --white: #fff;
+
+    /* Typography */
+    --font-heading: 'Poppins', Arial, sans-serif;
+    --font-body:    'Inter', Arial, sans-serif;
+
+    /* Danger / like / delete */
+    --danger: #ef4444;
+    --danger-bg: rgba(239, 68, 68, 0.08);
+
+    /* Form errors */
+    --error: #ff3333;
+    --error-dark: #cc0000;
+    --error-bg: #fff5f5;
+
+    /* Shadows */
+    --shadow-sm:      rgba(0, 0, 0, 0.12);
+    --shadow-md:      rgba(0, 0, 0, 0.2);
+    --shadow-lg:      rgba(0, 0, 0, 0.3);
+    --shadow-overlay: rgba(0, 0, 0, 0.4);
+    --shadow-heavy:   rgba(0, 0, 0, 0.7);
+
+    /* Focus ring */
+    --focus-ring: rgba(1, 188, 201, 0.2);
+
+    /* Subtle borders */
+    --border-subtle: rgba(0, 0, 0, 0.15);
+    --border-faint:  rgba(0, 0, 0, 0.05);
+    --border-light:  rgba(0, 0, 0, 0.1);
 }
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body);
+}
+
+/* Headings use the display face */
+h1, h2, h3, h4, h5, h6,
+.logo,
+.event-title,
+.eventTitle,
+.category-title,
+.myEventsText,
+.myLikedEventsText,
+.username,
+.footer-title {
+    font-family: var(--font-heading);
 }
 
 body {

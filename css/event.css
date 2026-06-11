@@ -1,0 +1,220 @@
+/* ============================================================
+   event.css  —  Pagina de detalii eveniment
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+.event-page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 24px 60px;
+}
+
+/* ── Back link ── */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.6;
+    margin-bottom: 20px;
+    transition: opacity 0.2s ease, gap 0.2s ease;
+}
+.back-btn:hover {
+    opacity: 1;
+    gap: 12px;
+}
+
+/* ── Card: single column, poster on top ── */
+.event-detail-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--section-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px var(--shadow-sm);
+}
+
+/* ── Poster: horizontal banner at the top ── */
+.event-poster-wrap {
+    width: 100%;
+    height: 340px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.event-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+/* ── Info panel below the poster ── */
+.event-info-panel {
+    padding: 28px 32px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* ── Two-column main row: left info, right actions ── */
+.event-info-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.event-info-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+.event-info-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.event-price {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    font-family: 'Montserrat', Arial, sans-serif;
+    white-space: nowrap;
+}
+
+/* ── Category badge ── */
+.event-badge {
+    display: inline-block;
+    background: var(--button-bg);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 50px;
+    padding: 4px 14px;
+}
+
+/* ── Title ── */
+.event-title {
+    font-size: 34px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.15;
+    color: var(--text);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* ── Meta row (date + location) ── */
+.event-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 15px;
+    color: var(--text);
+    font-weight: 500;
+}
+.meta-item svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+.meta-time {
+    background: var(--background);
+    border-radius: 6px;
+    padding: 1px 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-left: 2px;
+}
+
+/* ── Divider ── */
+.event-divider {
+    border: none;
+    border-top: 1.5px solid var(--border);
+    opacity: 0.2;
+    margin: 4px 0;
+}
+
+/* ── Description ── */
+.event-description {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-2);
+}
+
+/* ── Like button ── */
+.like-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 20px;
+    border: 2px solid var(--border);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+}
+.like-btn .heart-svg {
+    fill: transparent;
+    stroke: currentColor;
+    stroke-width: 1px;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+.like-btn.liked {
+    border-color: var(--danger);
+    color: var(--danger);
+}
+.like-btn.liked .heart-svg {
+    fill: var(--danger);
+    stroke: var(--danger);
+}
+.like-btn:hover:not(:disabled) {
+    background: var(--danger-bg);
+    border-color: var(--danger);
+    color: var(--danger);
+}
+.like-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .event-poster-wrap { height: 220px; }
+    .event-info-panel  { padding: 20px; }
+    .event-title       { font-size: 24px; }
+}
+/* ── Mobile: stack columns ── */
+@media (max-width: 600px) {
+    .event-info-main {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .event-info-right {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+}

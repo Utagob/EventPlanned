@@ -1,5 +1,6 @@
 const translations = {
     RO: {
+        // Header
         search_placeholder: "Caută...",
         cat_concerts: "Concerte",
         cat_festivals: "Festivaluri",
@@ -9,15 +10,49 @@ const translations = {
         cat_more: "Mai mult",
         cat_training: "Instruiri",
         cat_kids: "Pentru Copii",
+        // Footer
+        footer_home: "Acasă",
+        footer_about_us: "Despre noi",
+        footer_contact: "Contactează",
+        // Index CTA
         popular_events: "Evenimente Populare",
         event_date: "5-6 Octombrie",
         event_location: "Chișinău",
         event_title: "Ziua Vinului",
-        footer_home: "Acasă",
-        footer_about_us: "Despre noi",
-        footer_contact: "Contactează"
+        cta_title: "Fă-ți evenimentul cunoscut!",
+        cta_subtitle: "Adaugă evenimentul tău pe platformă și ajungi la mii de oameni interesați.",
+        cta_btn: "+ Începe acum",
+        // Profile
+        profile_my_events: "Evenimentele mele:",
+        profile_my_liked: "Evenimente salvate:",
+        profile_return: "Înapoi la pagina principală",
+        profile_logout: "Deconectare",
+        profile_empty_events: "Nu ai creat niciun eveniment încă.",
+        profile_empty_liked: "Nu ai apreciat niciun eveniment încă.",
+        // Create Event form
+        create_title: "Creează un eveniment nou",
+        create_subtitle: "Completează detaliile de mai jos pentru a publica evenimentul.",
+        create_label_name: "Numele evenimentului",
+        create_placeholder_name: "ex. Festival de Muzică de Vară",
+        create_label_category: "Categorie",
+        create_select_category: "Selectează o categorie",
+        create_label_datetime: "Data și ora",
+        create_label_price: "Preț (MDL)",
+        create_label_location: "Locație",
+        create_placeholder_location: "ex. Piața Marii Adunări Naționale",
+        create_label_image: "Poster / Imagine",
+        create_label_desc: "Descriere",
+        create_placeholder_desc: "Spune-le oamenilor despre ce este evenimentul tău...",
+        create_btn: "Publică evenimentul",
+        // Edit Event form
+        edit_title: "Modifică detaliile evenimentului",
+        edit_subtitle: "Actualizează câmpurile de mai jos pentru a edita publicarea.",
+        edit_label_image: "Schimbă posterul (lasă gol pentru a păstra imaginea actuală)",
+        edit_btn_save: "Salvează modificările",
+        edit_btn_back: "Înapoi",
     },
     EN: {
+        // Header
         search_placeholder: "Search...",
         cat_concerts: "Concerts",
         cat_festivals: "Festivals",
@@ -27,15 +62,49 @@ const translations = {
         cat_more: "More",
         cat_training: "Training",
         cat_kids: "For kids",
+        // Footer
+        footer_home: "Home",
+        footer_about_us: "About us",
+        footer_contact: "Contact",
+        // Index CTA
         popular_events: "Popular events",
         event_date: "October 5-6",
         event_location: "Chisinau",
         event_title: "Wine Day",
-        footer_home: "Home",
-        footer_about_us: "About us",
-        footer_contact: "Contact"
+        cta_title: "Make your event known!",
+        cta_subtitle: "Add your event to the platform and reach thousands of interested people.",
+        cta_btn: "+ Start now",
+        // Profile
+        profile_my_events: "My Events:",
+        profile_my_liked: "Liked Events:",
+        profile_return: "Return to home page",
+        profile_logout: "Logout",
+        profile_empty_events: "You haven't created any events yet.",
+        profile_empty_liked: "You haven't liked any events yet.",
+        // Create Event form
+        create_title: "Create a New Event",
+        create_subtitle: "Fill in the details below to publish your event.",
+        create_label_name: "Event Name",
+        create_placeholder_name: "e.g., Summer Music Festival",
+        create_label_category: "Category",
+        create_select_category: "Select a category",
+        create_label_datetime: "Date & Time",
+        create_label_price: "Price (MDL)",
+        create_label_location: "Location",
+        create_placeholder_location: "e.g., Piata Marii Adunari Nationale",
+        create_label_image: "Event Poster / Image",
+        create_label_desc: "Description",
+        create_placeholder_desc: "Tell people what your event is about...",
+        create_btn: "Publish Event",
+        // Edit Event form
+        edit_title: "Modify Event Details",
+        edit_subtitle: "Update fields below to edit your existing publication.",
+        edit_label_image: "Change Event Poster (Leave blank to keep existing)",
+        edit_btn_save: "Save Modifications",
+        edit_btn_back: "Back",
     },
     RU: {
+        // Header
         search_placeholder: "Поиск...",
         cat_concerts: "Концерты",
         cat_festivals: "Фестивали",
@@ -45,13 +114,46 @@ const translations = {
         cat_more: "Еще",
         cat_training: "Тренинги",
         cat_kids: "Для детей",
+        // Footer
+        footer_home: "Главная",
+        footer_about_us: "О нас",
+        footer_contact: "Контакт",
+        // Index CTA
         popular_events: "Популярные события",
         event_date: "5-6 Октября",
         event_location: "Кишинёв",
         event_title: "День Вина",
-        footer_home: "Дома",
-        footer_about_us: "О нас",
-        footer_contact: "Контакт"
+        cta_title: "Сделайте ваше мероприятие известным!",
+        cta_subtitle: "Добавьте своё мероприятие на платформу и охватите тысячи заинтересованных людей.",
+        cta_btn: "+ Начать сейчас",
+        // Profile
+        profile_my_events: "Мои мероприятия:",
+        profile_my_liked: "Сохранённые мероприятия:",
+        profile_return: "Вернуться на главную",
+        profile_logout: "Выйти",
+        profile_empty_events: "Вы ещё не создали ни одного мероприятия.",
+        profile_empty_liked: "Вы ещё не лайкнули ни одного мероприятия.",
+        // Create Event form
+        create_title: "Создать новое мероприятие",
+        create_subtitle: "Заполните данные ниже, чтобы опубликовать мероприятие.",
+        create_label_name: "Название мероприятия",
+        create_placeholder_name: "напр. Летний музыкальный фестиваль",
+        create_label_category: "Категория",
+        create_select_category: "Выберите категорию",
+        create_label_datetime: "Дата и время",
+        create_label_price: "Цена (MDL)",
+        create_label_location: "Место проведения",
+        create_placeholder_location: "напр. Площадь Великого национального собрания",
+        create_label_image: "Постер / Изображение",
+        create_label_desc: "Описание",
+        create_placeholder_desc: "Расскажите людям о вашем мероприятии...",
+        create_btn: "Опубликовать мероприятие",
+        // Edit Event form
+        edit_title: "Изменить детали мероприятия",
+        edit_subtitle: "Обновите поля ниже для редактирования публикации.",
+        edit_label_image: "Изменить постер (оставьте пустым, чтобы сохранить текущий)",
+        edit_btn_save: "Сохранить изменения",
+        edit_btn_back: "Назад",
     }
 };
 
@@ -73,7 +175,11 @@ function changeLanguage(lang) {
         const translationText = translations[lang][key];
 
         if (translationText) {
-            if (element.tagName === "INPUT") {
+            const tag = element.tagName;
+            const type = element.getAttribute("type") || "";
+            if (tag === "INPUT" && type !== "submit" && type !== "button") {
+                element.placeholder = translationText;
+            } else if (tag === "TEXTAREA") {
                 element.placeholder = translationText;
             } else {
                 element.textContent = translationText;
@@ -92,14 +198,16 @@ function changeLanguage(lang) {
     localStorage.setItem("selectedLanguage", lang);
 }
 
-// Reusable asynchronous card listener registration (keeps likes active after refreshing layout panels)
 function initializeHeartClickHandlers() {
     const hearts = document.querySelectorAll('.eventHeart');
     hearts.forEach(heart => {
         const freshHeart = heart.cloneNode(true);
         heart.parentNode.replaceChild(freshHeart, heart);
 
-        freshHeart.addEventListener("click", async () => {
+        freshHeart.addEventListener("click", async (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
             const eventId = freshHeart.getAttribute("data-event-id");
 
             try {
@@ -211,7 +319,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Hit the endpoint to generate suggestions payload fragments
             fetch(`include/search_suggestions.inc.php?q=${encodeURIComponent(queryText)}`)
                 .then(res => res.json())
                 .then(recordsList => {
@@ -224,11 +331,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     let htmlItemsPayload = "";
                     recordsList.forEach(item => {
                         htmlItemsPayload += `
-                            <a href="event.php?id=${item.id}" class="suggestion-item-link">
-                                <img src="${item.image}" class="suggestion-thumbnail" alt="Poster">
+                            <a class="suggestion-item-link"
+                                href="event.php?id=${item.id}&from=index">
+                                <img class="suggestion-thumbnail" src="${item.image}" alt="${escapeHtml(item.event_name)}">
                                 <div class="suggestion-metadata">
-                                    <span class="suggestion-title">${escapeHtml(item.event_name)}</span>
-                                    <span class="suggestion-location">${escapeHtml(item.event_location)}</span>
+                                    <p class="suggestion-title">${escapeHtml(item.event_name)}</p>
+                                    <p class="suggestion-location">${escapeHtml(item.event_location)}</p>
                                 </div>
                             </a>
                         `;
@@ -281,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 currentSelectedCategory = targetCategory;
                 button.style.background = "var(--button-bg, #03cad8)";
-                button.style.color = "#ffffff";
+                button.style.color = "#000000";
             }
             loadFilteredEvents();
         });
