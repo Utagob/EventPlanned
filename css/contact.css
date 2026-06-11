@@ -1,0 +1,73 @@
+/* contact.css */
+
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Adjust height to fit between header and footer naturally */
+    min-height: calc(100vh - 250px); 
+    padding: 50px 20px;
+    background-color: var(--background);
+}
+
+.contact-box {
+    background-color: var(--section-bg);
+    border-radius: 15px;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0px 8px 24px var(--shadow-md);
+    box-sizing: border-box;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-input-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-input-section input,
+.contact-input-section textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px; /* Matches category buttons */
+    background-color: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-input-section input::placeholder,
+.contact-input-section textarea::placeholder {
+    color: var(--search-color);
+    opacity: 0.8;
+}
+
+.contact-input-section input:focus,
+.contact-input-section textarea:focus {
+    outline: none;
+    border-color: var(--button-bg);
+    box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.contact-input-section textarea {
+    resize: vertical; /* Allows user to drag height, but keeps width fixed */
+    min-height: 120px;
+    max-height: 300px;
+}
+
+.contact-btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
